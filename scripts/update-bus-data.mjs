@@ -60,7 +60,8 @@ function normalizeStation(row) {
   return {
     station_seq: Number(row.station_seq ?? row.stationSeq ?? row.stationSeqNo ?? row.seq ?? row.seqNo ?? 0),
     station_id: String(row.station_id ?? row.stationId ?? row.stationID ?? ""),
-    station_name: String(row.station_name ?? row.stationName ?? row.stationNameKr ?? row.name ?? row.stationNm ?? "")
+    station_name: String(row.station_name ?? row.stationName ?? row.stationNameKr ?? row.name ?? row.stationNm ?? ""),
+    turn_seq: Number(row.turn_seq ?? row.turnSeq ?? 0) || null
   };
 }
 

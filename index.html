@@ -44,7 +44,7 @@
 
     .filters {
       display: grid;
-      grid-template-columns: minmax(280px, 2fr) minmax(180px, 1fr) 120px;
+      grid-template-columns: minmax(110px, .7fr) minmax(110px, .7fr) minmax(150px, 1fr) minmax(170px, 1.1fr) minmax(170px, 1.1fr);
       gap: 12px;
       padding: 16px;
       background: var(--panel);
@@ -60,7 +60,7 @@
       font-weight: 700;
     }
 
-    select, button {
+    select {
       min-height: 40px;
       border: 1px solid var(--line);
       border-radius: 6px;
@@ -70,38 +70,34 @@
       padding: 8px 10px;
     }
 
-    button {
-      align-self: end;
-      border-color: var(--accent);
-      background: var(--accent);
-      color: #fff;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    button:disabled {
-      cursor: not-allowed;
-      opacity: .55;
-    }
-
-    .summary {
+    .travel-panel {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: minmax(130px, auto) 1fr minmax(130px, auto) 1fr;
+      gap: 8px 18px;
+      align-items: center;
       margin: 16px 0;
-    }
-
-    .metric {
-      padding: 14px 16px;
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: 8px;
+      padding: 16px;
     }
 
-    .metric strong {
+    .travel-panel span {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .travel-panel strong {
       display: block;
-      margin-top: 4px;
-      font-size: 22px;
+      font-size: 34px;
+      line-height: 1.1;
+    }
+
+    .travel-panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.45;
     }
 
     .table-wrap {
@@ -141,9 +137,23 @@
     .seats-good { color: var(--good); font-weight: 700; }
     .seats-zero { color: var(--bad); font-weight: 700; }
     .warning { color: var(--warn); }
+    .stack {
+      display: grid;
+      gap: 3px;
+    }
+    .bus-chip {
+      display: inline-block;
+      min-width: 46px;
+      padding: 2px 7px;
+      border-radius: 999px;
+      background: var(--chip-bg);
+      color: var(--chip-fg);
+      font-weight: 700;
+      text-align: center;
+    }
 
     @media (max-width: 820px) {
-      .filters, .summary { grid-template-columns: 1fr; }
+      .filters, .travel-panel { grid-template-columns: 1fr; }
       h1 { font-size: 23px; }
     }
   </style>
@@ -161,17 +171,33 @@
         <select id="routeId"><option value="">노선을 선택</option></select>
       </label>
       <label>
+        목적
+        <select id="commuteMode">
+          <option value="morning">출근</option>
+          <option value="evening">퇴근</option>
+        </select>
+      </label>
+      <label>
         탑승 시간대
         <select id="timeSlot"><option value="">시간대를 선택</option></select>
       </label>
-      <button id="search" type="button">조회</button>
+      <label>
+        출발 정류장
+        <select id="fromStation"><option value="">노선 선택</option></select>
+      </label>
+      <label>
+        도착 정류장
+        <select id="toStation"><option value="">노선 선택</option></select>
+      </label>
     </section>
 
-    <section class="summary" aria-label="요약">
-      <div class="metric">전체 정류장<strong id="stationCount">0</strong></div>
-      <div class="metric">관측 정류장<strong id="observedCount">0</strong></div>
-      <div class="metric">좌석 있음<strong id="availableCount">0</strong></div>
-      <div class="metric">데이터 날짜<strong id="dataDate">-</strong></div>
+    <section class="travel-panel" aria-label="소요시간">
+      <span>평균 소요시간</span>
+      <strong id="travelAvg">-</strong>
+      <span>출발 평균 좌석</span>
+      <strong id="fromSeatAvg">-</strong>
+      <span>계산 기준</span>
+      <p id="travelDetail">정류장 두 개를 선택하면 같은 차량 기준 소요시간을 계산합니다.</p>
     </section>
 
     <section class="table-wrap" aria-label="정류장별 잔여좌석">
@@ -197,10 +223,10 @@
     const $ = (id) => document.getElementById(id);
     const state = { index: null, catalog: [], route: [], locations: new Map() };
 
-    const slots = [
-      ...slotRange(6 * 60, 11 * 60),
-      ...slotRange(16 * 60, 21 * 60)
-    ];
+    const slots = {
+      morning: slotRange(6 * 60, 11 * 60),
+      evening: slotRange(16 * 60, 21 * 60)
+    };
 
     function slotRange(start, end) {
       const values = [];
@@ -255,16 +281,23 @@
       state.catalog = await getJson("data/route_catalog.json", []);
 
       $("routeId").innerHTML = '<option value="">노선을 선택</option>' + routeOptions();
-      $("timeSlot").innerHTML = slots.map((start) => `<option value="${start}">${hhmm(start)}-${hhmm(start + 30)}</option>`).join("");
-      $("dataDate").textContent = latestDate() || "-";
+      renderSlots();
 
       setStatus(state.index.updated_at ? `마지막 갱신: ${new Date(state.index.updated_at).toLocaleString("ko-KR", { hour12: false })}` : "아직 수집된 데이터가 없습니다.", !state.index.updated_at);
 
       if (state.index.mock && state.index.routes?.length) {
         $("routeId").value = state.index.routes[0];
+        $("commuteMode").value = "morning";
+        renderSlots();
         $("timeSlot").value = "420";
+        await updateStationPickers();
         await search();
       }
+    }
+
+    function renderSlots() {
+      const mode = $("commuteMode").value || "morning";
+      $("timeSlot").innerHTML = slots[mode].map((start) => `<option value="${start}">${hhmm(start)}-${hhmm(start + 30)}</option>`).join("");
     }
 
     function latestDate() {
@@ -274,9 +307,15 @@
     function routeOptions() {
       const catalogById = new Map(state.catalog.map((route) => [String(route.route_id), route]));
       return (state.index.routes || []).map((id) => {
-        const label = catalogById.get(String(id))?.label || String(id);
+        const route = catalogById.get(String(id));
+        const label = route?.route_no || String(id);
         return `<option value="${id}">${label}</option>`;
       }).join("");
+    }
+
+    function selectedRouteMeta() {
+      const routeId = $("routeId").value;
+      return state.catalog.find((route) => String(route.route_id) === String(routeId)) || {};
     }
 
     async function loadRoute(routeId) {
@@ -285,6 +324,32 @@
       state.route = (await getJson(`data/routes/${encodeURIComponent(routeId)}.json`, []))
         .sort((a, b) => Number(a.station_seq) - Number(b.station_seq));
       return state.route;
+    }
+
+    function routeTurnSeq(stations) {
+      return stations.find((station) => Number(station.turn_seq))?.turn_seq || Math.max(...stations.map((station) => Number(station.station_seq)));
+    }
+
+    function commuteStations(stations) {
+      const turnSeq = routeTurnSeq(stations);
+      const mode = $("commuteMode").value;
+      const reverse = Boolean(selectedRouteMeta().reverse_commute);
+      const useAfterTurn = reverse ? mode === "morning" : mode === "evening";
+      return useAfterTurn
+        ? stations.filter((station) => Number(station.station_seq) >= turnSeq)
+        : stations.filter((station) => Number(station.station_seq) <= turnSeq);
+    }
+
+    async function updateStationPickers() {
+      const routeId = $("routeId").value;
+      const stations = routeId ? commuteStations(await loadRoute(routeId)) : [];
+      const options = stations.map((station) => `<option value="${station.station_seq}">${station.station_name || "-"}</option>`).join("");
+      $("fromStation").innerHTML = options || '<option value="">정류장 없음</option>';
+      $("toStation").innerHTML = options || '<option value="">정류장 없음</option>';
+      if (stations.length > 1) {
+        $("fromStation").value = stations[0].station_seq;
+        $("toStation").value = stations.at(-1).station_seq;
+      }
     }
 
     async function loadLocations(date) {
@@ -306,11 +371,30 @@
       return grouped;
     }
 
-    function render(stations, grouped) {
-      $("stationCount").textContent = stations.length;
-      $("observedCount").textContent = grouped.size;
-      $("availableCount").textContent = [...grouped.values()].filter((rows) => rows.some((row) => Number(row.remain_seat_num) > 0)).length;
+    function busSuffix(plate) {
+      return String(plate || "-").match(/\d{4}$/)?.[0] || String(plate || "-").slice(-4);
+    }
 
+    function busColor(plate) {
+      const colors = [
+        ["#e8f1ff", "#174a8b"],
+        ["#eaf7ec", "#17622f"],
+        ["#fff1db", "#8a4b00"],
+        ["#f4eefe", "#5b2a86"],
+        ["#e8f7f8", "#0f5b63"],
+        ["#fdecef", "#8b1d32"]
+      ];
+      const key = String(plate || "");
+      const sum = [...key].reduce((total, char) => total + char.charCodeAt(0), 0);
+      return colors[sum % colors.length];
+    }
+
+    function chip(plate, value) {
+      const [bg, fg] = busColor(plate);
+      return `<span class="bus-chip" style="--chip-bg:${bg};--chip-fg:${fg}">${value}</span>`;
+    }
+
+    function render(stations, grouped) {
       if (!stations.length) {
         $("rows").innerHTML = '<tr><td class="empty" colspan="6">이 노선의 정류장 목록이 없습니다.</td></tr>';
         return;
@@ -318,19 +402,72 @@
 
       $("rows").innerHTML = stations.map((station) => {
         const rows = grouped.get(Number(station.station_seq)) || [];
-        const seats = rows.map((row) => Number(row.remain_seat_num ?? 0));
-        const plates = rows.map((row) => row.plate_no || "-");
-        const times = rows.map((row) => fmtTime(row.retrieved_at));
-        const hasSeats = seats.some((seat) => seat > 0);
+        const hasSeats = rows.some((row) => Number(row.remain_seat_num) > 0);
+        const stack = (items) => `<span class="stack">${items.map((item) => `<span>${item}</span>`).join("")}</span>`;
         return `<tr>
           <td>${station.station_seq}</td>
           <td>${station.station_name || "-"}</td>
           <td class="muted">${station.station_id || "-"}</td>
-          <td class="${rows.length ? (hasSeats ? "seats-good" : "seats-zero") : "muted"}">${rows.length ? seats.join(" / ") : "관측 없음"}</td>
-          <td>${rows.length ? plates.join(" / ") : "-"}</td>
-          <td>${rows.length ? times.join(" / ") : "-"}</td>
+          <td class="${rows.length ? (hasSeats ? "seats-good" : "seats-zero") : "muted"}">${rows.length ? stack(rows.map((row) => chip(row.plate_no, Number(row.remain_seat_num ?? 0)))) : "관측 없음"}</td>
+          <td>${rows.length ? stack(rows.map((row) => chip(row.plate_no, busSuffix(row.plate_no)))) : "-"}</td>
+          <td>${rows.length ? stack(rows.map((row) => chip(row.plate_no, fmtTime(row.retrieved_at)))) : "-"}</td>
         </tr>`;
       }).join("");
+    }
+
+    function renderTravelTime(rows, startMinute) {
+      const fromSeq = Number($("fromStation").value);
+      const toSeq = Number($("toStation").value);
+      const fromName = state.route.find((station) => Number(station.station_seq) === fromSeq)?.station_name || "출발 정류장";
+      const toName = state.route.find((station) => Number(station.station_seq) === toSeq)?.station_name || "도착 정류장";
+      const fromRows = rows.filter((row) => Number(row.station_seq) === fromSeq)
+        .filter((row) => rowMinute(row) >= startMinute && rowMinute(row) < startMinute + 30);
+      const fromSeats = fromRows.map((row) => Number(row.remain_seat_num ?? 0));
+      $("fromSeatAvg").textContent = fromSeats.length
+        ? `${Math.round(fromSeats.reduce((sum, seat) => sum + seat, 0) / fromSeats.length)}석`
+        : "-";
+
+      if (!fromSeq || !toSeq || fromSeq === toSeq) {
+        $("travelAvg").textContent = "-";
+        $("travelDetail").textContent = "서로 다른 정류장 두 개를 선택하세요.";
+        return;
+      }
+
+      const byPlate = new Map();
+      for (const row of rows) {
+        if (!row.plate_no) continue;
+        byPlate.set(row.plate_no, [...(byPlate.get(row.plate_no) || []), row]);
+      }
+
+      const matches = [];
+      for (const [plate, plateRows] of byPlate) {
+        const fromRows = plateRows
+          .filter((row) => Number(row.station_seq) === fromSeq)
+          .filter((row) => rowMinute(row) >= startMinute && rowMinute(row) < startMinute + 30)
+          .sort((a, b) => parseDate(a.retrieved_at) - parseDate(b.retrieved_at));
+        const toRows = plateRows
+          .filter((row) => Number(row.station_seq) === toSeq)
+          .sort((a, b) => parseDate(a.retrieved_at) - parseDate(b.retrieved_at));
+
+        for (const from of fromRows) {
+          const fromAt = parseDate(from.retrieved_at);
+          const to = toRows.find((row) => parseDate(row.retrieved_at) > fromAt);
+          if (!to) continue;
+          const minutes = (parseDate(to.retrieved_at) - fromAt) / 60000;
+          if (minutes > 0) matches.push({ plate, minutes, fromAt, toAt: parseDate(to.retrieved_at) });
+          break;
+        }
+      }
+
+      if (!matches.length) {
+        $("travelAvg").textContent = "-";
+        $("travelDetail").textContent = `${fromName} -> ${toName}: 같은 차량의 연속 관측이 없습니다.`;
+        return;
+      }
+
+      const avg = matches.reduce((sum, item) => sum + item.minutes, 0) / matches.length;
+      $("travelAvg").textContent = `${Math.round(avg)}분`;
+      $("travelDetail").textContent = `${fromName} -> ${toName}: ${matches.length}대 평균, ${matches.map((item) => `${item.plate} ${Math.round(item.minutes)}분`).join(" / ")}`;
     }
 
     async function search() {
@@ -344,26 +481,36 @@
         return;
       }
 
-      $("search").disabled = true;
       setStatus("조회 중입니다.");
 
-      const stations = await loadRoute(routeId);
-      const rows = (await loadLocations(date))
+      const stations = commuteStations(await loadRoute(routeId));
+      const allRows = (await loadLocations(date))
         .filter((row) => String(row.route_id) === routeId)
-        .filter((row) => dateKey(row.retrieved_at) === date)
+        .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)))
+        .filter((row) => dateKey(row.retrieved_at) === date);
+      const rows = allRows
         .filter((row) => {
           const minute = rowMinute(row);
           return minute >= start && minute < end;
         });
 
       render(stations, observationsByStation(rows));
+      renderTravelTime(allRows, start);
       setStatus(`${date} ${hhmm(start)}-${hhmm(end)} 기준 ${rows.length}건 관측`);
-      $("search").disabled = false;
     }
 
-    $("search").addEventListener("click", search);
-    $("routeId").addEventListener("change", () => search());
+    $("routeId").addEventListener("change", async () => {
+      await updateStationPickers();
+      search();
+    });
+    $("commuteMode").addEventListener("change", async () => {
+      renderSlots();
+      await updateStationPickers();
+      search();
+    });
     $("timeSlot").addEventListener("change", () => search());
+    $("fromStation").addEventListener("change", () => search());
+    $("toStation").addEventListener("change", () => search());
     loadIndex();
   </script>
 </body>

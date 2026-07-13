@@ -2,241 +2,289 @@
   {
     "station_seq": 1,
     "station_id": "228001817",
-    "station_name": "한숲6단지"
+    "station_name": "한숲6단지",
+    "turn_seq": 25
   },
   {
     "station_seq": 2,
     "station_id": "228001821",
-    "station_name": "한숲4단지"
+    "station_name": "한숲4단지",
+    "turn_seq": 25
   },
   {
     "station_seq": 3,
     "station_id": "277104650",
-    "station_name": "완장리(경유)"
+    "station_name": "완장리(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 4,
     "station_id": "228000132",
-    "station_name": "서1리"
+    "station_name": "서1리",
+    "turn_seq": 25
   },
   {
     "station_seq": 5,
     "station_id": "228000744",
-    "station_name": "진우.늘푸른오스카빌.우남퍼스트빌아파트"
+    "station_name": "진우.늘푸른오스카빌.우남퍼스트빌아파트",
+    "turn_seq": 25
   },
   {
     "station_seq": 6,
     "station_id": "228000742",
-    "station_name": "삼가역.두산위브"
+    "station_name": "삼가역.두산위브",
+    "turn_seq": 25
   },
   {
     "station_seq": 7,
     "station_id": "228000688",
-    "station_name": "수원동.쌍용아파트"
+    "station_name": "수원동.쌍용아파트",
+    "turn_seq": 25
   },
   {
     "station_seq": 8,
     "station_id": "228000687",
-    "station_name": "상지석.대우.진흥아파트"
+    "station_name": "상지석.대우.진흥아파트",
+    "turn_seq": 25
   },
   {
     "station_seq": 9,
     "station_id": "228000685",
-    "station_name": "어정삼거리.강남마을"
+    "station_name": "어정삼거리.강남마을",
+    "turn_seq": 25
   },
   {
     "station_seq": 10,
     "station_id": "228000684",
-    "station_name": "강남대역.강남대입구"
+    "station_name": "강남대역.강남대입구",
+    "turn_seq": 25
   },
   {
     "station_seq": 11,
     "station_id": "228000683",
-    "station_name": "수원컨트리클럽"
+    "station_name": "수원컨트리클럽",
+    "turn_seq": 25
   },
   {
     "station_seq": 12,
     "station_id": "228000682",
-    "station_name": "기흥역6번출구"
+    "station_name": "기흥역6번출구",
+    "turn_seq": 25
   },
   {
     "station_seq": 13,
     "station_id": "228000681",
-    "station_name": "롯데캐슬스카이.이안두드림.백남준아트센터"
+    "station_name": "롯데캐슬스카이.이안두드림.백남준아트센터",
+    "turn_seq": 25
   },
   {
     "station_seq": 14,
     "station_id": "228000680",
-    "station_name": "상미마을.신갈오거리.롯데캐슬레이시티"
+    "station_name": "상미마을.신갈오거리.롯데캐슬레이시티",
+    "turn_seq": 25
   },
   {
     "station_seq": 15,
     "station_id": "277103364",
-    "station_name": "수원신갈TG(경유)"
+    "station_name": "수원신갈TG(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 16,
     "station_id": "277103361",
-    "station_name": "신갈JC(경유)"
+    "station_name": "신갈JC(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 17,
     "station_id": "277103443",
-    "station_name": "죽전(경유)"
+    "station_name": "죽전(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 18,
     "station_id": "277102630",
-    "station_name": "금곡(경유)"
+    "station_name": "금곡(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 19,
     "station_id": "277103386",
-    "station_name": "서울TG(경유)"
+    "station_name": "서울TG(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 20,
     "station_id": "277104184",
-    "station_name": "판교진입(경유)"
+    "station_name": "판교진입(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 21,
     "station_id": "206000577",
-    "station_name": "화랑공원동편"
+    "station_name": "화랑공원동편",
+    "turn_seq": 25
   },
   {
     "station_seq": 22,
     "station_id": "206000539",
-    "station_name": "금토천교"
+    "station_name": "금토천교",
+    "turn_seq": 25
   },
   {
     "station_seq": 23,
     "station_id": "206000540",
-    "station_name": "삼평교"
+    "station_name": "삼평교",
+    "turn_seq": 25
   },
   {
     "station_seq": 24,
     "station_id": "204000064",
-    "station_name": "판교제2테크노밸리"
+    "station_name": "판교제2테크노밸리",
+    "turn_seq": 25
   },
   {
     "station_seq": 25,
     "station_id": "204000199",
-    "station_name": "국가기록원성남분원.코이카"
+    "station_name": "국가기록원성남분원.코이카",
+    "turn_seq": 25
   },
   {
     "station_seq": 26,
     "station_id": "204000060",
-    "station_name": "판교제2테크노밸리"
+    "station_name": "판교제2테크노밸리",
+    "turn_seq": 25
   },
   {
     "station_seq": 27,
     "station_id": "206000542",
-    "station_name": "삼평교"
+    "station_name": "삼평교",
+    "turn_seq": 25
   },
   {
     "station_seq": 28,
     "station_id": "206000543",
-    "station_name": "금토천교"
+    "station_name": "금토천교",
+    "turn_seq": 25
   },
   {
     "station_seq": 29,
     "station_id": "206000561",
-    "station_name": "화랑공원동편"
+    "station_name": "화랑공원동편",
+    "turn_seq": 25
   },
   {
     "station_seq": 30,
     "station_id": "277104185",
-    "station_name": "판교출입(경유)"
+    "station_name": "판교출입(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 31,
     "station_id": "277103385",
-    "station_name": "서울TG(경유)"
+    "station_name": "서울TG(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 32,
     "station_id": "277102104",
-    "station_name": "금곡(경유)"
+    "station_name": "금곡(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 33,
     "station_id": "277103442",
-    "station_name": "죽전(경유)"
+    "station_name": "죽전(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 34,
     "station_id": "277103360",
-    "station_name": "신갈JC(경유)"
+    "station_name": "신갈JC(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 35,
     "station_id": "277103365",
-    "station_name": "수원신갈TG(경유)"
+    "station_name": "수원신갈TG(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 36,
     "station_id": "228000698",
-    "station_name": "상미마을.신갈오거리.롯데캐슬레이시티"
+    "station_name": "상미마을.신갈오거리.롯데캐슬레이시티",
+    "turn_seq": 25
   },
   {
     "station_seq": 37,
     "station_id": "228000697",
-    "station_name": "롯데캐슬스카이.이안두드림.백남준아트센터"
+    "station_name": "롯데캐슬스카이.이안두드림.백남준아트센터",
+    "turn_seq": 25
   },
   {
     "station_seq": 38,
     "station_id": "228000696",
-    "station_name": "기흥역8번출구"
+    "station_name": "기흥역8번출구",
+    "turn_seq": 25
   },
   {
     "station_seq": 39,
     "station_id": "228000695",
-    "station_name": "수원컨트리클럽"
+    "station_name": "수원컨트리클럽",
+    "turn_seq": 25
   },
   {
     "station_seq": 40,
     "station_id": "228000694",
-    "station_name": "강남대역.강남대입구"
+    "station_name": "강남대역.강남대입구",
+    "turn_seq": 25
   },
   {
     "station_seq": 41,
     "station_id": "228000692",
-    "station_name": "상지석.대우.진흥아파트"
+    "station_name": "상지석.대우.진흥아파트",
+    "turn_seq": 25
   },
   {
     "station_seq": 42,
     "station_id": "228000691",
-    "station_name": "수원동.쌍용아파트"
+    "station_name": "수원동.쌍용아파트",
+    "turn_seq": 25
   },
   {
     "station_seq": 43,
     "station_id": "228000781",
-    "station_name": "삼가역.두산위브"
+    "station_name": "삼가역.두산위브",
+    "turn_seq": 25
   },
   {
     "station_seq": 44,
     "station_id": "228000780",
-    "station_name": "진우.늘푸른오스카빌.우남퍼스트빌아파트"
+    "station_name": "진우.늘푸른오스카빌.우남퍼스트빌아파트",
+    "turn_seq": 25
   },
   {
     "station_seq": 45,
     "station_id": "228000137",
-    "station_name": "서1리"
+    "station_name": "서1리",
+    "turn_seq": 25
   },
   {
     "station_seq": 46,
     "station_id": "277104667",
-    "station_name": "완장리(경유)"
+    "station_name": "완장리(경유)",
+    "turn_seq": 25
   },
   {
     "station_seq": 47,
     "station_id": "228001819",
-    "station_name": "한숲3단지"
+    "station_name": "한숲3단지",
+    "turn_seq": 25
   },
   {
     "station_seq": 48,
     "station_id": "228001818",
-    "station_name": "한숲5단지"
+    "station_name": "한숲5단지",
+    "turn_seq": 25
   }
 ]
