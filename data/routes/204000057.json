@@ -1,0 +1,427 @@
+[
+  {
+    "station_seq": 1,
+    "station_id": "205000227",
+    "station_name": "도촌동9단지앞"
+  },
+  {
+    "station_seq": 2,
+    "station_id": "205000220",
+    "station_name": "도촌7단지.8단지"
+  },
+  {
+    "station_seq": 3,
+    "station_id": "205000221",
+    "station_name": "도촌초등학교.도촌종합사회복지관"
+  },
+  {
+    "station_seq": 4,
+    "station_id": "205000222",
+    "station_name": "동분당포레스트.스위첸파티오1단지"
+  },
+  {
+    "station_seq": 5,
+    "station_id": "205000231",
+    "station_name": "동강프라자앞"
+  },
+  {
+    "station_seq": 6,
+    "station_id": "205000217",
+    "station_name": "도촌1.2단지"
+  },
+  {
+    "station_seq": 7,
+    "station_id": "205000098",
+    "station_name": "분재단지.도촌동1단지"
+  },
+  {
+    "station_seq": 8,
+    "station_id": "205000175",
+    "station_name": "매화마을주공3단지"
+  },
+  {
+    "station_seq": 9,
+    "station_id": "205000210",
+    "station_name": "매화마을3단지"
+  },
+  {
+    "station_seq": 10,
+    "station_id": "206000726",
+    "station_name": "야탑119안전센터"
+  },
+  {
+    "station_seq": 11,
+    "station_id": "206000729",
+    "station_name": "연꽃마을4단지"
+  },
+  {
+    "station_seq": 12,
+    "station_id": "205000173",
+    "station_name": "야탑중학교"
+  },
+  {
+    "station_seq": 13,
+    "station_id": "206000361",
+    "station_name": "동부.코오롱아파트"
+  },
+  {
+    "station_seq": 14,
+    "station_id": "206000157",
+    "station_name": "야탑역.종합버스터미널(전면)"
+  },
+  {
+    "station_seq": 15,
+    "station_id": "206000392",
+    "station_name": "쌍용아파트"
+  },
+  {
+    "station_seq": 16,
+    "station_id": "206000055",
+    "station_name": "성남아트센터.태원고교"
+  },
+  {
+    "station_seq": 17,
+    "station_id": "206000054",
+    "station_name": "이매역"
+  },
+  {
+    "station_seq": 18,
+    "station_id": "206000053",
+    "station_name": "송림고교.이매촌성지아파트.청구아파트"
+  },
+  {
+    "station_seq": 19,
+    "station_id": "206000316",
+    "station_name": "이매촌한신.서현역.AK프라자"
+  },
+  {
+    "station_seq": 20,
+    "station_id": "206000530",
+    "station_name": "성남역.백현마을2단지"
+  },
+  {
+    "station_seq": 21,
+    "station_id": "206000531",
+    "station_name": "백현마을1단지"
+  },
+  {
+    "station_seq": 22,
+    "station_id": "206000532",
+    "station_name": "판교역.낙생육교.현대백화점"
+  },
+  {
+    "station_seq": 23,
+    "station_id": "277103149",
+    "station_name": "판교TG(경유)"
+  },
+  {
+    "station_seq": 24,
+    "station_id": "277102599",
+    "station_name": "청계터널진입(경유)"
+  },
+  {
+    "station_seq": 25,
+    "station_id": "226000190",
+    "station_name": "의왕청계영업소"
+  },
+  {
+    "station_seq": 26,
+    "station_id": "277103157",
+    "station_name": "학의JC(경유)"
+  },
+  {
+    "station_seq": 27,
+    "station_id": "209000133",
+    "station_name": "농수산물시장"
+  },
+  {
+    "station_seq": 28,
+    "station_id": "209000160",
+    "station_name": "귀인중학교"
+  },
+  {
+    "station_seq": 29,
+    "station_id": "209000057",
+    "station_name": "초원대림아파트"
+  },
+  {
+    "station_seq": 30,
+    "station_id": "209000132",
+    "station_name": "한림대병원후문"
+  },
+  {
+    "station_seq": 31,
+    "station_id": "209000097",
+    "station_name": "안양시청"
+  },
+  {
+    "station_seq": 32,
+    "station_id": "209000131",
+    "station_name": "동안구청"
+  },
+  {
+    "station_seq": 33,
+    "station_id": "209000094",
+    "station_name": "동안경찰서.범계역"
+  },
+  {
+    "station_seq": 34,
+    "station_id": "209000093",
+    "station_name": "안양우편물류센터"
+  },
+  {
+    "station_seq": 35,
+    "station_id": "209000119",
+    "station_name": "효성티앤씨.진영레미콘"
+  },
+  {
+    "station_seq": 36,
+    "station_id": "208000005",
+    "station_name": "명학대교"
+  },
+  {
+    "station_seq": 37,
+    "station_id": "208000004",
+    "station_name": "성결대학교.안양아트센터.명학역"
+  },
+  {
+    "station_seq": 38,
+    "station_id": "208000003",
+    "station_name": "만안구청"
+  },
+  {
+    "station_seq": 39,
+    "station_id": "208000002",
+    "station_name": "안양센트럴헤센.KCC스위첸"
+  },
+  {
+    "station_seq": 40,
+    "station_id": "208000001",
+    "station_name": "서안양우체국.국제나은병원"
+  },
+  {
+    "station_seq": 41,
+    "station_id": "208000066",
+    "station_name": "남부시장"
+  },
+  {
+    "station_seq": 42,
+    "station_id": "208000065",
+    "station_name": "안양1번가.안양고용센터"
+  },
+  {
+    "station_seq": 43,
+    "station_id": "208000069",
+    "station_name": "안양역"
+  },
+  {
+    "station_seq": 44,
+    "station_id": "277101770",
+    "station_name": "원평노블레스5차(경유)"
+  },
+  {
+    "station_seq": 45,
+    "station_id": "208000158",
+    "station_name": "안양시외버스정류소.교보생명.댕리단길"
+  },
+  {
+    "station_seq": 46,
+    "station_id": "208000254",
+    "station_name": "포스빌.안양고용센터"
+  },
+  {
+    "station_seq": 47,
+    "station_id": "208000156",
+    "station_name": "벽산상가.2001아울렛"
+  },
+  {
+    "station_seq": 48,
+    "station_id": "208000155",
+    "station_name": "서안양우체국.국제나은병원"
+  },
+  {
+    "station_seq": 49,
+    "station_id": "208000087",
+    "station_name": "안양센트럴헤센.KCC스위첸"
+  },
+  {
+    "station_seq": 50,
+    "station_id": "208000086",
+    "station_name": "만안구청"
+  },
+  {
+    "station_seq": 51,
+    "station_id": "208000281",
+    "station_name": "성결대학교.안양아트센터.명학역"
+  },
+  {
+    "station_seq": 52,
+    "station_id": "208000084",
+    "station_name": "명학대교.안양자동차매매단지"
+  },
+  {
+    "station_seq": 53,
+    "station_id": "209000118",
+    "station_name": "효성티앤씨.진영레미콘"
+  },
+  {
+    "station_seq": 54,
+    "station_id": "209000110",
+    "station_name": "안양우편물류센터"
+  },
+  {
+    "station_seq": 55,
+    "station_id": "209000135",
+    "station_name": "롯데백화점.범계역"
+  },
+  {
+    "station_seq": 56,
+    "station_id": "209000109",
+    "station_name": "문화의거리"
+  },
+  {
+    "station_seq": 57,
+    "station_id": "209000108",
+    "station_name": "안양시청"
+  },
+  {
+    "station_seq": 58,
+    "station_id": "209000130",
+    "station_name": "중앙공원"
+  },
+  {
+    "station_seq": 59,
+    "station_id": "209000072",
+    "station_name": "향촌현대아파트"
+  },
+  {
+    "station_seq": 60,
+    "station_id": "209000159",
+    "station_name": "귀인중학교"
+  },
+  {
+    "station_seq": 61,
+    "station_id": "209000129",
+    "station_name": "농수산물시장"
+  },
+  {
+    "station_seq": 62,
+    "station_id": "277103156",
+    "station_name": "학의JC(경유)"
+  },
+  {
+    "station_seq": 63,
+    "station_id": "226000191",
+    "station_name": "의왕청계영업소"
+  },
+  {
+    "station_seq": 64,
+    "station_id": "277102796",
+    "station_name": "청계터널출입(경유)"
+  },
+  {
+    "station_seq": 65,
+    "station_id": "277103148",
+    "station_name": "판교TG(경유)"
+  },
+  {
+    "station_seq": 66,
+    "station_id": "206000535",
+    "station_name": "판교역.낙생육교.현대백화점"
+  },
+  {
+    "station_seq": 67,
+    "station_id": "206000536",
+    "station_name": "백현마을4단지"
+  },
+  {
+    "station_seq": 68,
+    "station_id": "206000537",
+    "station_name": "성남역.백현마을3단지"
+  },
+  {
+    "station_seq": 69,
+    "station_id": "206000239",
+    "station_name": "이매촌한신.서현역.AK프라자"
+  },
+  {
+    "station_seq": 70,
+    "station_id": "206000028",
+    "station_name": "송림고등학교.이매촌청구아파트.동신아파트"
+  },
+  {
+    "station_seq": 71,
+    "station_id": "206000227",
+    "station_name": "이매역.진흥아파트.동신아파트"
+  },
+  {
+    "station_seq": 72,
+    "station_id": "206000226",
+    "station_name": "성남아트센터.태원고교"
+  },
+  {
+    "station_seq": 73,
+    "station_id": "206000441",
+    "station_name": "경남아너스빌"
+  },
+  {
+    "station_seq": 74,
+    "station_id": "206000784",
+    "station_name": "야탑역.종합버스터미널(광역버스)"
+  },
+  {
+    "station_seq": 75,
+    "station_id": "206000057",
+    "station_name": "야탑중학교"
+  },
+  {
+    "station_seq": 76,
+    "station_id": "206000728",
+    "station_name": "매화마을1단지"
+  },
+  {
+    "station_seq": 77,
+    "station_id": "206000478",
+    "station_name": "매화마을3단지"
+  },
+  {
+    "station_seq": 78,
+    "station_id": "206000264",
+    "station_name": "매화마을주공3단지"
+  },
+  {
+    "station_seq": 79,
+    "station_id": "205000097",
+    "station_name": "도촌동1단지앞"
+  },
+  {
+    "station_seq": 80,
+    "station_id": "205000211",
+    "station_name": "도촌1.2단지"
+  },
+  {
+    "station_seq": 81,
+    "station_id": "205000230",
+    "station_name": "도촌2단지.근로복지공단"
+  },
+  {
+    "station_seq": 82,
+    "station_id": "205000212",
+    "station_name": "동분당포레스트.스위첸파티오1단지"
+  },
+  {
+    "station_seq": 83,
+    "station_id": "205000213",
+    "station_name": "도촌초등학교.도촌종합사회복지관"
+  },
+  {
+    "station_seq": 84,
+    "station_id": "205000214",
+    "station_name": "도촌7단지.8단지"
+  },
+  {
+    "station_seq": 85,
+    "station_id": "205000226",
+    "station_name": "도촌동9단지앞"
+  }
+]

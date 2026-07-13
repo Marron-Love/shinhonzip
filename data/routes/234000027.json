@@ -1,0 +1,627 @@
+[
+  {
+    "station_seq": 1,
+    "station_id": "203000254",
+    "station_name": "광교차고지"
+  },
+  {
+    "station_seq": 2,
+    "station_id": "203000306",
+    "station_name": "광교차고지.연화장입구"
+  },
+  {
+    "station_seq": 3,
+    "station_id": "277102617",
+    "station_name": "동부차고지(경유)"
+  },
+  {
+    "station_seq": 4,
+    "station_id": "228002014",
+    "station_name": "광교지웰레이크.광교더포레스트"
+  },
+  {
+    "station_seq": 5,
+    "station_id": "228002012",
+    "station_name": "상현고등학교"
+  },
+  {
+    "station_seq": 6,
+    "station_id": "228002010",
+    "station_name": "새빛초등학교.광교자이"
+  },
+  {
+    "station_seq": 7,
+    "station_id": "228002009",
+    "station_name": "상현중학교"
+  },
+  {
+    "station_seq": 8,
+    "station_id": "228001042",
+    "station_name": "광교상현마을현대아파트"
+  },
+  {
+    "station_seq": 9,
+    "station_id": "228003542",
+    "station_name": "상현교차로.광교상현현대.솔하임A"
+  },
+  {
+    "station_seq": 10,
+    "station_id": "228000875",
+    "station_name": "쌍용2차.상떼빌.서원초중고"
+  },
+  {
+    "station_seq": 11,
+    "station_id": "228000874",
+    "station_name": "상현1동.금호베스트빌.동일스위트"
+  },
+  {
+    "station_seq": 12,
+    "station_id": "228000873",
+    "station_name": "원희캐슬.센트럴아이파크"
+  },
+  {
+    "station_seq": 13,
+    "station_id": "228000872",
+    "station_name": "만현10단지아이파크.현대성우5차"
+  },
+  {
+    "station_seq": 14,
+    "station_id": "228001034",
+    "station_name": "수지지역난방공사"
+  },
+  {
+    "station_seq": 15,
+    "station_id": "228000936",
+    "station_name": "풍덕고교사거리.현대아파트"
+  },
+  {
+    "station_seq": 16,
+    "station_id": "228000950",
+    "station_name": "풍덕천2동행정복지센터.현대성우아파트"
+  },
+  {
+    "station_seq": 17,
+    "station_id": "228000949",
+    "station_name": "신월초교.상록아파트.주공9단지.공무원아파트"
+  },
+  {
+    "station_seq": 18,
+    "station_id": "228000948",
+    "station_name": "주공아파트"
+  },
+  {
+    "station_seq": 19,
+    "station_id": "228000912",
+    "station_name": "수지프라자.한국아파트"
+  },
+  {
+    "station_seq": 20,
+    "station_id": "228000911",
+    "station_name": "한성아파트.한국아파트.현대1차아파트"
+  },
+  {
+    "station_seq": 21,
+    "station_id": "228000930",
+    "station_name": "삼성1차.보원.건영아파트"
+  },
+  {
+    "station_seq": 22,
+    "station_id": "228000929",
+    "station_name": "동문아파트.삼성2차아파트.동부아파트"
+  },
+  {
+    "station_seq": 23,
+    "station_id": "228000928",
+    "station_name": "수지고등학교.삼성4차아파트"
+  },
+  {
+    "station_seq": 24,
+    "station_id": "228000927",
+    "station_name": "수지중학교.더샵동천이스트포레"
+  },
+  {
+    "station_seq": 25,
+    "station_id": "228000908",
+    "station_name": "초입마을.삼익풍림동아아파트"
+  },
+  {
+    "station_seq": 26,
+    "station_id": "228000884",
+    "station_name": "신명아파트.손곡초등학교"
+  },
+  {
+    "station_seq": 27,
+    "station_id": "228000883",
+    "station_name": "동천동현대홈타운2차아파트"
+  },
+  {
+    "station_seq": 28,
+    "station_id": "228000882",
+    "station_name": "동천동현대홈타운1차아파트"
+  },
+  {
+    "station_seq": 29,
+    "station_id": "228001858",
+    "station_name": "동천역.배송단지"
+  },
+  {
+    "station_seq": 30,
+    "station_id": "206000230",
+    "station_name": "머내기업은행"
+  },
+  {
+    "station_seq": 31,
+    "station_id": "206000212",
+    "station_name": "로얄냉장"
+  },
+  {
+    "station_seq": 32,
+    "station_id": "206000211",
+    "station_name": "보바스병원"
+  },
+  {
+    "station_seq": 33,
+    "station_id": "206000210",
+    "station_name": "쇳골마을.궁내동톨게이트"
+  },
+  {
+    "station_seq": 34,
+    "station_id": "206000209",
+    "station_name": "궁내동.궁안마을"
+  },
+  {
+    "station_seq": 35,
+    "station_id": "206000208",
+    "station_name": "성남외고입구"
+  },
+  {
+    "station_seq": 36,
+    "station_id": "206000207",
+    "station_name": "낙생고등학교"
+  },
+  {
+    "station_seq": 37,
+    "station_id": "206000534",
+    "station_name": "지역난방공사"
+  },
+  {
+    "station_seq": 38,
+    "station_id": "206000577",
+    "station_name": "화랑공원동편"
+  },
+  {
+    "station_seq": 39,
+    "station_id": "206000539",
+    "station_name": "금토천교"
+  },
+  {
+    "station_seq": 40,
+    "station_id": "206000540",
+    "station_name": "삼평교"
+  },
+  {
+    "station_seq": 41,
+    "station_id": "204000064",
+    "station_name": "판교제2테크노밸리"
+  },
+  {
+    "station_seq": 42,
+    "station_id": "204000200",
+    "station_name": "국가기록원성남분원.코이카"
+  },
+  {
+    "station_seq": 43,
+    "station_id": "204000063",
+    "station_name": "시흥사거리"
+  },
+  {
+    "station_seq": 44,
+    "station_id": "204000002",
+    "station_name": "고등119안전센터"
+  },
+  {
+    "station_seq": 45,
+    "station_id": "204000001",
+    "station_name": "고등동행정복지센터.판교밸리자이아파트"
+  },
+  {
+    "station_seq": 46,
+    "station_id": "204000046",
+    "station_name": "등자리"
+  },
+  {
+    "station_seq": 47,
+    "station_id": "204000223",
+    "station_name": "공군부대제2정문.면회실"
+  },
+  {
+    "station_seq": 48,
+    "station_id": "204000045",
+    "station_name": "공군아파트"
+  },
+  {
+    "station_seq": 49,
+    "station_id": "204000044",
+    "station_name": "효성고등학교"
+  },
+  {
+    "station_seq": 50,
+    "station_id": "204000043",
+    "station_name": "오야동.신촌동행정복지센터"
+  },
+  {
+    "station_seq": 51,
+    "station_id": "204000042",
+    "station_name": "신촌동앞"
+  },
+  {
+    "station_seq": 52,
+    "station_id": "122000315",
+    "station_name": "세곡동사거리"
+  },
+  {
+    "station_seq": 53,
+    "station_id": "122000316",
+    "station_name": "방죽마을"
+  },
+  {
+    "station_seq": 54,
+    "station_id": "122000317",
+    "station_name": "래미안포레아파트"
+  },
+  {
+    "station_seq": 55,
+    "station_id": "122000718",
+    "station_name": "고속철도수서역"
+  },
+  {
+    "station_seq": 56,
+    "station_id": "122000302",
+    "station_name": "수서역5번출구"
+  },
+  {
+    "station_seq": 57,
+    "station_id": "122000137",
+    "station_name": "쌍용아파트"
+  },
+  {
+    "station_seq": 58,
+    "station_id": "122000388",
+    "station_name": "새마을운동중앙회"
+  },
+  {
+    "station_seq": 59,
+    "station_id": "122000386",
+    "station_name": "총회회관.휘문고입구"
+  },
+  {
+    "station_seq": 60,
+    "station_id": "122000139",
+    "station_name": "삼성역"
+  },
+  {
+    "station_seq": 61,
+    "station_id": "122000140",
+    "station_name": "강남경찰서.강남운전면허시험장"
+  },
+  {
+    "station_seq": 62,
+    "station_id": "123000065",
+    "station_name": "잠실종합운동장"
+  },
+  {
+    "station_seq": 63,
+    "station_id": "123000068",
+    "station_name": "종합운동장사거리"
+  },
+  {
+    "station_seq": 64,
+    "station_id": "123000069",
+    "station_name": "잠실새내역4번출구"
+  },
+  {
+    "station_seq": 65,
+    "station_id": "123000056",
+    "station_name": "잠실트리지움아파트앞"
+  },
+  {
+    "station_seq": 66,
+    "station_id": "123000057",
+    "station_name": "잠실역.롯데월드"
+  },
+  {
+    "station_seq": 67,
+    "station_id": "277101950",
+    "station_name": "석촌호수앞(경유)"
+  },
+  {
+    "station_seq": 68,
+    "station_id": "123000004",
+    "station_name": "석촌호수.한솔병원(중)"
+  },
+  {
+    "station_seq": 69,
+    "station_id": "123000006",
+    "station_name": "석촌역(중)"
+  },
+  {
+    "station_seq": 70,
+    "station_id": "123000102",
+    "station_name": "송파역.헬리오시티"
+  },
+  {
+    "station_seq": 71,
+    "station_id": "123000299",
+    "station_name": "가락1동주민센터"
+  },
+  {
+    "station_seq": 72,
+    "station_id": "123000298",
+    "station_name": "가락시장.헬리오시티"
+  },
+  {
+    "station_seq": 73,
+    "station_id": "122000747",
+    "station_name": "수서역6번출구"
+  },
+  {
+    "station_seq": 74,
+    "station_id": "122000717",
+    "station_name": "고속철도수서역"
+  },
+  {
+    "station_seq": 75,
+    "station_id": "122000320",
+    "station_name": "래미안포레아파트"
+  },
+  {
+    "station_seq": 76,
+    "station_id": "122000321",
+    "station_name": "방죽마을"
+  },
+  {
+    "station_seq": 77,
+    "station_id": "122000308",
+    "station_name": "세곡동사거리"
+  },
+  {
+    "station_seq": 78,
+    "station_id": "204000041",
+    "station_name": "신촌동앞"
+  },
+  {
+    "station_seq": 79,
+    "station_id": "204000040",
+    "station_name": "오야동.신촌동행정복지센터"
+  },
+  {
+    "station_seq": 80,
+    "station_id": "204000039",
+    "station_name": "효성고등학교"
+  },
+  {
+    "station_seq": 81,
+    "station_id": "204000057",
+    "station_name": "공군아파트"
+  },
+  {
+    "station_seq": 82,
+    "station_id": "204000222",
+    "station_name": "공군부대제2정문.면회실"
+  },
+  {
+    "station_seq": 83,
+    "station_id": "204000038",
+    "station_name": "등자리"
+  },
+  {
+    "station_seq": 84,
+    "station_id": "204000062",
+    "station_name": "고등동행정복지센터.판교밸리자이아파트"
+  },
+  {
+    "station_seq": 85,
+    "station_id": "204000037",
+    "station_name": "고등119안전센터"
+  },
+  {
+    "station_seq": 86,
+    "station_id": "204000061",
+    "station_name": "시흥사거리"
+  },
+  {
+    "station_seq": 87,
+    "station_id": "204000199",
+    "station_name": "국가기록원성남분원.코이카"
+  },
+  {
+    "station_seq": 88,
+    "station_id": "204000060",
+    "station_name": "판교제2테크노밸리"
+  },
+  {
+    "station_seq": 89,
+    "station_id": "206000542",
+    "station_name": "삼평교"
+  },
+  {
+    "station_seq": 90,
+    "station_id": "206000543",
+    "station_name": "금토천교"
+  },
+  {
+    "station_seq": 91,
+    "station_id": "206000561",
+    "station_name": "화랑공원동편"
+  },
+  {
+    "station_seq": 92,
+    "station_id": "206000602",
+    "station_name": "낙생고등학교"
+  },
+  {
+    "station_seq": 93,
+    "station_id": "206000205",
+    "station_name": "성남외고입구"
+  },
+  {
+    "station_seq": 94,
+    "station_id": "206000686",
+    "station_name": "궁내동"
+  },
+  {
+    "station_seq": 95,
+    "station_id": "206000204",
+    "station_name": "궁내동.궁안마을"
+  },
+  {
+    "station_seq": 96,
+    "station_id": "206000203",
+    "station_name": "쇳골마을.궁내동톨게이트"
+  },
+  {
+    "station_seq": 97,
+    "station_id": "206000202",
+    "station_name": "보바스병원"
+  },
+  {
+    "station_seq": 98,
+    "station_id": "206000201",
+    "station_name": "로얄냉장"
+  },
+  {
+    "station_seq": 99,
+    "station_id": "206000221",
+    "station_name": "동원동"
+  },
+  {
+    "station_seq": 100,
+    "station_id": "206000220",
+    "station_name": "머내기업은행"
+  },
+  {
+    "station_seq": 101,
+    "station_id": "228000906",
+    "station_name": "동천동현대홈타운1차아파트"
+  },
+  {
+    "station_seq": 102,
+    "station_id": "228000905",
+    "station_name": "동천동현대홈타운2차아파트"
+  },
+  {
+    "station_seq": 103,
+    "station_id": "228000904",
+    "station_name": "신명아파트.손곡초등학교"
+  },
+  {
+    "station_seq": 104,
+    "station_id": "228000909",
+    "station_name": "초입마을.삼익풍림동아아파트"
+  },
+  {
+    "station_seq": 105,
+    "station_id": "228000926",
+    "station_name": "수지중학교.더샵동천이스트포레"
+  },
+  {
+    "station_seq": 106,
+    "station_id": "228000925",
+    "station_name": "수지고등학교.삼성4차아파트"
+  },
+  {
+    "station_seq": 107,
+    "station_id": "228000924",
+    "station_name": "동문아파트.삼성2차아파트.동부아파트"
+  },
+  {
+    "station_seq": 108,
+    "station_id": "228000923",
+    "station_name": "삼성1차.보원.건영아파트"
+  },
+  {
+    "station_seq": 109,
+    "station_id": "228000920",
+    "station_name": "한성아파트.한국아파트.현대1차아파트"
+  },
+  {
+    "station_seq": 110,
+    "station_id": "228000976",
+    "station_name": "수지구청역3번출구"
+  },
+  {
+    "station_seq": 111,
+    "station_id": "228000974",
+    "station_name": "신월초교.상록아파트.주공9단지"
+  },
+  {
+    "station_seq": 112,
+    "station_id": "228002278",
+    "station_name": "풍덕천2동행정복지센터.신정7단지"
+  },
+  {
+    "station_seq": 113,
+    "station_id": "228000937",
+    "station_name": "풍덕고교사거리.현대아파트"
+  },
+  {
+    "station_seq": 114,
+    "station_id": "228002146",
+    "station_name": "수지지역난방공사"
+  },
+  {
+    "station_seq": 115,
+    "station_id": "228000881",
+    "station_name": "현대성우5차.만현10단지아이파크"
+  },
+  {
+    "station_seq": 116,
+    "station_id": "228000880",
+    "station_name": "원희캐슬프라자"
+  },
+  {
+    "station_seq": 117,
+    "station_id": "228000878",
+    "station_name": "상현1동.금호베스트빌.동일스위트"
+  },
+  {
+    "station_seq": 118,
+    "station_id": "228000877",
+    "station_name": "쌍용2차.상떼빌.서원초중고"
+  },
+  {
+    "station_seq": 119,
+    "station_id": "228001431",
+    "station_name": "상현교차로.광교상현현대.솔하임A"
+  },
+  {
+    "station_seq": 120,
+    "station_id": "228001184",
+    "station_name": "광교상현마을현대아파트"
+  },
+  {
+    "station_seq": 121,
+    "station_id": "228002008",
+    "station_name": "상현중학교"
+  },
+  {
+    "station_seq": 122,
+    "station_id": "228002013",
+    "station_name": "상현고등학교"
+  },
+  {
+    "station_seq": 123,
+    "station_id": "228002035",
+    "station_name": "광교지웰레이크.광교더포레스트"
+  },
+  {
+    "station_seq": 124,
+    "station_id": "203000307",
+    "station_name": "광교차고지.연화장입구"
+  },
+  {
+    "station_seq": 125,
+    "station_id": "203000253",
+    "station_name": "광교차고지"
+  }
+]

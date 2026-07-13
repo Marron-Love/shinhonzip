@@ -1,0 +1,43 @@
+name: Update bus data
+
+on:
+  schedule:
+    - cron: "0,30 21-23,0-1 * * *"
+    - cron: "0 2 * * *"
+    - cron: "0,30 7-11 * * *"
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetch and commit bus data
+        env:
+          LOCATION_API_URL: ${{ secrets.LOCATION_API_URL }}
+          ROUTE_STATIONS_API_URL: ${{ secrets.ROUTE_STATIONS_API_URL }}
+          BUS_API_KEY: ${{ secrets.BUS_API_KEY }}
+          BUS_API_KEY_HEADER: ${{ secrets.BUS_API_KEY_HEADER }}
+          LOCATION_START_PARAM: ${{ vars.LOCATION_START_PARAM }}
+          LOCATION_END_PARAM: ${{ vars.LOCATION_END_PARAM }}
+          ROUTE_STATIONS_SERVICE_KEY: ${{ secrets.ROUTE_STATIONS_SERVICE_KEY }}
+          ROUTE_STATIONS_SERVICE_KEY_PARAM: ${{ vars.ROUTE_STATIONS_SERVICE_KEY_PARAM }}
+          ROUTE_STATIONS_FORMAT: ${{ vars.ROUTE_STATIONS_FORMAT }}
+          STATION_LOOKUP_ID_PARAM: ${{ vars.STATION_LOOKUP_ID_PARAM }}
+          ROUTE_ID_PARAM: ${{ vars.ROUTE_ID_PARAM }}
+          BUS_ROUTE_IDS: ${{ vars.BUS_ROUTE_IDS }}
+          FETCH_HOURS: 0.5
+        run: |
+          node scripts/update-bus-data.mjs
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || git commit -m "Update bus data"
+          git push

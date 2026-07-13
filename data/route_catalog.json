@@ -1,0 +1,65 @@
+[
+  {
+    "route_id": "234000027",
+    "route_no": "6900",
+    "start_name": "\uad11\uad50\ucc28\uace0\uc9c0",
+    "start_station_id": "203000254",
+    "end_name": "\uc7a0\uc2e4\uc885\ud569\uc6b4\ub3d9\uc7a5",
+    "end_station_id": "123000065",
+    "label": "6900 - \uad11\uad50\ucc28\uace0\uc9c0 -> \uc7a0\uc2e4\uc885\ud569\uc6b4\ub3d9\uc7a5"
+  },
+  {
+    "route_id": "204000057",
+    "route_no": "3330",
+    "start_name": "\ub3c4\ucd0c\ub3d99\ub2e8\uc9c0\uc55e",
+    "start_station_id": "205000227",
+    "end_name": "\uc548\uc591\uc5ed",
+    "end_station_id": "208000069",
+    "label": "3330 - \ub3c4\ucd0c\ub3d99\ub2e8\uc9c0\uc55e -> \uc548\uc591\uc5ed"
+  },
+  {
+    "route_id": "200000296",
+    "route_no": "5100\uc608\uc57d",
+    "start_name": "\uc0b4\uad6c\uace8\ub3d9\uc544\uc544\ud30c\ud2b8",
+    "start_station_id": "203000157",
+    "end_name": "\uc2e0\ubd84\ub2f9\uc120\uac15\ub0a8\uc5ed(\uc911)",
+    "end_station_id": "121000009",
+    "label": "5100\uc608\uc57d - \uc0b4\uad6c\uace8\ub3d9\uc544\uc544\ud30c\ud2b8 -> \uc2e0\ubd84\ub2f9\uc120\uac15\ub0a8\uc5ed(\uc911)"
+  },
+  {
+    "route_id": "228000184",
+    "route_no": "5600",
+    "start_name": "\uba85\uc9c0\ub300",
+    "start_station_id": "228000191",
+    "end_name": "\ud14c\ud06c\ub178\ub9c8\ud2b8\uc55e.\uac15\ubcc0\uc5ed(C)",
+    "end_station_id": "104000279",
+    "label": "5600 - \uba85\uc9c0\ub300 -> \ud14c\ud06c\ub178\ub9c8\ud2b8\uc55e.\uac15\ubcc0\uc5ed(C)"
+  },
+  {
+    "route_id": "228000429",
+    "route_no": "5001A",
+    "start_name": "\ub0a8\ub3d9\ucc28\uace0\uc9c0",
+    "start_station_id": "228002026",
+    "end_name": "\uc2e0\ub17c\ud604\uc5ed.\uc8fc\ub958\uc131\ube4c\ub529",
+    "end_station_id": "121000944",
+    "label": "5001A - \ub0a8\ub3d9\ucc28\uace0\uc9c0 -> \uc2e0\ub17c\ud604\uc5ed.\uc8fc\ub958\uc131\ube4c\ub529"
+  },
+  {
+    "route_id": "228000431",
+    "route_no": "5003A",
+    "start_name": "\ub0a8\ub3d9\ucc28\uace0\uc9c0",
+    "start_station_id": "228002026",
+    "end_name": "\uc2e0\ub17c\ud604\uc5ed.\uc8fc\ub958\uc131\ube4c\ub529",
+    "end_station_id": "121000944",
+    "label": "5003A - \ub0a8\ub3d9\ucc28\uace0\uc9c0 -> \uc2e0\ub17c\ud604\uc5ed.\uc8fc\ub958\uc131\ube4c\ub529"
+  },
+  {
+    "route_id": "228000442",
+    "route_no": "9241",
+    "start_name": "\ud55c\uc2326\ub2e8\uc9c0",
+    "start_station_id": "228001817",
+    "end_name": "\uad6d\uac00\uae30\ub85d\uc6d0\uc131\ub0a8\ubd84\uc6d0.\ucf54\uc774\uce74",
+    "end_station_id": "204000199",
+    "label": "9241 - \ud55c\uc2326\ub2e8\uc9c0 -> \uad6d\uac00\uae30\ub85d\uc6d0\uc131\ub0a8\ubd84\uc6d0.\ucf54\uc774\uce74"
+  }
+]
