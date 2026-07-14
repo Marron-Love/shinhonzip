@@ -222,6 +222,9 @@
   <script>
     const $ = (id) => document.getElementById(id);
     const state = { index: null, catalog: [], route: [], locations: new Map() };
+    const dashboardRouteIds = new Set(["204000057", "228000429", "228000431"]);
+    // ponytail: dashboard-only 3330 picker limits; move to route data if this grows.
+    const route3330Limits = { id: "204000057", eveningFromSeq: 21, morningToSeq: 66 };
 
     const slots = {
       morning: slotRange(6 * 60, 11 * 60),
@@ -295,6 +298,7 @@
     async function loadIndex() {
       state.index = await getJson("data/index.json", { updated_at: null, dates: [], routes: [] });
       state.catalog = await getJson("data/route_catalog.json", []);
+      state.index.routes = (state.index.routes || []).filter((id) => dashboardRouteIds.has(String(id)));
 
       $("routeId").innerHTML = '<option value="">노선을 선택</option>' + routeOptions();
       renderSlots();
@@ -356,15 +360,30 @@
         : stations.filter((station) => Number(station.station_seq) <= turnSeq);
     }
 
+    function pickerStations(stations, picker) {
+      const routeId = $("routeId").value;
+      const mode = $("commuteMode").value;
+      if (routeId !== route3330Limits.id) return stations;
+      if (mode === "evening" && picker === "from") {
+        return stations.filter((station) => Number(station.station_seq) >= route3330Limits.eveningFromSeq);
+      }
+      if (mode === "morning" && picker === "to") {
+        return stations.filter((station) => Number(station.station_seq) <= route3330Limits.morningToSeq);
+      }
+      return stations;
+    }
+
     async function updateStationPickers() {
       const routeId = $("routeId").value;
       const stations = routeId ? commuteStations(await loadRoute(routeId)) : [];
-      const options = stations.map((station) => `<option value="${station.station_seq}">${station.station_name || "-"}</option>`).join("");
-      $("fromStation").innerHTML = options || '<option value="">정류장 없음</option>';
-      $("toStation").innerHTML = options || '<option value="">정류장 없음</option>';
-      if (stations.length > 1) {
-        $("fromStation").value = stations[0].station_seq;
-        $("toStation").value = stations.at(-1).station_seq;
+      const fromStations = pickerStations(stations, "from");
+      const toStations = pickerStations(stations, "to");
+      const options = (items) => items.map((station) => `<option value="${station.station_seq}">${station.station_name || "-"}</option>`).join("");
+      $("fromStation").innerHTML = options(fromStations) || '<option value="">정류장 없음</option>';
+      $("toStation").innerHTML = options(toStations) || '<option value="">정류장 없음</option>';
+      if (fromStations.length) $("fromStation").value = fromStations[0].station_seq;
+      if (toStations.length) {
+        $("toStation").value = toStations.at(-1).station_seq;
       }
     }
 
