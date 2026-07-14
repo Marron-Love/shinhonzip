@@ -2,10 +2,7 @@ name: Update bus data
 
 on:
   schedule:
-    - cron: "0,30 21-23,0-1 * * *"
-    - cron: "0 2 * * *"
-    - cron: "0,30 7-11 * * *"
-    - cron: "0 12 * * *"
+    - cron: "0 2,14 * * *"
   workflow_dispatch:
 
 permissions:
@@ -21,7 +18,8 @@ jobs:
           node-version: 20
       - name: Fetch and commit bus data
         env:
-          LOCATION_API_URL: ${{ secrets.LOCATION_API_URL }}
+          PARSED_API_BASE_URL: https://api.statistics.bus.skystar.kr
+          LOCATION_API_URL: ${{ secrets.LOCATION_API_URL || secrets.PARSED_LOCATION_API_URL }}
           ROUTE_STATIONS_API_URL: ${{ secrets.ROUTE_STATIONS_API_URL }}
           BUS_API_KEY: ${{ secrets.BUS_API_KEY }}
           BUS_API_KEY_HEADER: ${{ secrets.BUS_API_KEY_HEADER }}
@@ -33,7 +31,7 @@ jobs:
           STATION_LOOKUP_ID_PARAM: ${{ vars.STATION_LOOKUP_ID_PARAM }}
           ROUTE_ID_PARAM: ${{ vars.ROUTE_ID_PARAM }}
           BUS_ROUTE_IDS: ${{ vars.BUS_ROUTE_IDS }}
-          FETCH_HOURS: 0.5
+          FETCH_HOURS: 12
         run: |
           node scripts/update-bus-data.mjs
           git config user.name "github-actions[bot]"

@@ -244,22 +244,38 @@
       return new Date(String(value).replace(" ", "T").replace(/(\.\d{3})\d+/, "$1"));
     }
 
+    function kstParts(date) {
+      return Object.fromEntries(new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Asia/Seoul",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      }).formatToParts(date).map((part) => [part.type, part.value]));
+    }
+
     function dateKey(value) {
-      const textDate = String(value || "").match(/^\d{4}-\d{2}-\d{2}/)?.[0];
       const parsed = parseDate(value);
-      return textDate || (parsed && !Number.isNaN(parsed.getTime()) ? parsed.toISOString().slice(0, 10) : "");
+      const textDate = String(value || "").match(/^\d{4}-\d{2}-\d{2}/)?.[0];
+      if (!parsed || Number.isNaN(parsed.getTime())) return textDate || "";
+      const parts = kstParts(parsed);
+      return `${parts.year}-${parts.month}-${parts.day}`;
     }
 
     function fmtTime(value) {
       const date = parseDate(value);
       return date && !Number.isNaN(date.getTime())
-        ? date.toLocaleTimeString("ko-KR", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
+        ? date.toLocaleTimeString("ko-KR", { timeZone: "Asia/Seoul", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
         : "-";
     }
 
     function rowMinute(row) {
       const date = parseDate(row.retrieved_at);
-      return date.getHours() * 60 + date.getMinutes();
+      const parts = kstParts(date);
+      return Number(parts.hour) * 60 + Number(parts.minute);
     }
 
     function setStatus(message, isWarning = false) {
@@ -352,11 +368,11 @@
       }
     }
 
-    async function loadLocations(date) {
-      if (!state.locations.has(date)) {
-        state.locations.set(date, await getJson(`data/locations/${date}.json`, []));
+    async function loadLocations() {
+      if (!state.locations.has("all")) {
+        state.locations.set("all", await getJson("data/locations/all.json", []));
       }
-      return state.locations.get(date);
+      return state.locations.get("all");
     }
 
     function observationsByStation(rows) {
@@ -484,7 +500,7 @@
       setStatus("조회 중입니다.");
 
       const stations = commuteStations(await loadRoute(routeId));
-      const allRows = (await loadLocations(date))
+      const allRows = (await loadLocations())
         .filter((row) => String(row.route_id) === routeId)
         .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)))
         .filter((row) => dateKey(row.retrieved_at) === date);
