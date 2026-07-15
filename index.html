@@ -226,6 +226,8 @@
     const dashboardRouteIds = new Set(["204000057", "228000429", "228000431"]);
     // ponytail: dashboard-only 3330 picker limits; move to route data if this grows.
     const route3330Limits = { id: "204000057", eveningFromSeq: 21, morningToSeq: 66 };
+    // ponytail: API requires a date range; old enough start date means "all accumulated" for this dashboard.
+    const locationsFromDate = "2020-01-01";
 
     const slots = {
       morning: slotRange(6 * 60, 11 * 60),
@@ -335,7 +337,7 @@
       const index = await getJson("data/index.json", { updated_at: null, dates: [], routes: [] });
       state.catalog = await getJson("data/route_catalog.json", []);
       const routes = [...dashboardRouteIds];
-      state.index = { ...index, updated_at: new Date().toISOString(), dates: [dateKey(new Date())], routes };
+      state.index = { ...index, updated_at: new Date().toISOString(), routes };
 
       $("routeId").innerHTML = '<option value="">노선을 선택</option>' + routeOptions();
       renderSlots();
@@ -436,13 +438,15 @@
       }
     }
 
-    async function loadLocations(routeId, date) {
-      const key = `${routeId}|${date}`;
+    async function loadLocations(routeId) {
+      const key = routeId;
       if (!state.locations.has(key)) {
         const fallback = async () => (await getJson("data/locations/all.json", []))
-          .filter((row) => String(row.route_id) === routeId)
-          .filter((row) => dateKey(row.retrieved_at) === date);
-        const raw = await getApiJson(`/api/busLocations/${encodeURIComponent(routeId)}`, { from: date, to: date }).catch(fallback);
+          .filter((row) => String(row.route_id) === routeId);
+        const raw = await getApiJson(`/api/busLocations/${encodeURIComponent(routeId)}`, {
+          from: locationsFromDate,
+          to: dateKey(new Date())
+        }).catch(fallback);
         state.locations.set(key, arrayFrom(raw)
           .map((row) => normalizeLocation(row, routeId))
           .filter((row) => row.route_id && row.station_seq && row.retrieved_at));
@@ -563,11 +567,10 @@
 
     async function search() {
       const routeId = $("routeId").value;
-      let date = latestDate();
       const start = Number($("timeSlot").value);
       const end = start + 30;
 
-      if (!routeId || !date || Number.isNaN(start)) {
+      if (!routeId || Number.isNaN(start)) {
         setStatus("노선과 탑승 시간대를 선택하세요.", true);
         return;
       }
@@ -575,19 +578,9 @@
       setStatus("조회 중입니다.");
 
       const stations = commuteStations(await loadRoute(routeId));
-      const rowsForDate = async (targetDate) => (await loadLocations(routeId, targetDate))
+      const allRows = (await loadLocations(routeId))
         .filter((row) => String(row.route_id) === routeId)
-        .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)))
-        .filter((row) => dateKey(row.retrieved_at) === targetDate);
-      let allRows = await rowsForDate(date);
-      const fallbackDate = (state.index?.dates || []).filter((item) => item !== date).at(-1);
-      if (!allRows.length && fallbackDate) {
-        const fallbackRows = await rowsForDate(fallbackDate);
-        if (fallbackRows.length) {
-          date = fallbackDate;
-          allRows = fallbackRows;
-        }
-      }
+        .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)));
       const rows = allRows
         .filter((row) => {
           const minute = rowMinute(row);
@@ -596,7 +589,7 @@
 
       render(stations, observationsByStation(rows));
       renderTravelTime(allRows, start);
-      setStatus(`${date} ${hhmm(start)}-${hhmm(end)} 기준 ${rows.length}건 관측`);
+      setStatus(`${hhmm(start)}-${hhmm(end)} 누적 ${rows.length}건 관측`);
     }
 
     $("routeId").addEventListener("change", async () => {
