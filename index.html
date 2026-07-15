@@ -563,7 +563,7 @@
 
     async function search() {
       const routeId = $("routeId").value;
-      const date = latestDate();
+      let date = latestDate();
       const start = Number($("timeSlot").value);
       const end = start + 30;
 
@@ -575,10 +575,19 @@
       setStatus("조회 중입니다.");
 
       const stations = commuteStations(await loadRoute(routeId));
-      const allRows = (await loadLocations(routeId, date))
+      const rowsForDate = async (targetDate) => (await loadLocations(routeId, targetDate))
         .filter((row) => String(row.route_id) === routeId)
         .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)))
-        .filter((row) => dateKey(row.retrieved_at) === date);
+        .filter((row) => dateKey(row.retrieved_at) === targetDate);
+      let allRows = await rowsForDate(date);
+      const fallbackDate = (state.index?.dates || []).filter((item) => item !== date).at(-1);
+      if (!allRows.length && fallbackDate) {
+        const fallbackRows = await rowsForDate(fallbackDate);
+        if (fallbackRows.length) {
+          date = fallbackDate;
+          allRows = fallbackRows;
+        }
+      }
       const rows = allRows
         .filter((row) => {
           const minute = rowMinute(row);
