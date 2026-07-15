@@ -579,11 +579,13 @@
       const byPlate = new Map();
       for (const row of rows) {
         if (!row.plate_no) continue;
-        byPlate.set(row.plate_no, [...(byPlate.get(row.plate_no) || []), row]);
+        const key = [dateKey(row.retrieved_at), row.plate_no].join("|");
+        byPlate.set(key, [...(byPlate.get(key) || []), row]);
       }
 
       const matches = [];
-      for (const [plate, plateRows] of byPlate) {
+      for (const [key, plateRows] of byPlate) {
+        const plate = key.split("|").at(-1);
         const fromRows = plateRows
           .filter((row) => Number(row.station_seq) === fromSeq)
           .filter((row) => rowMinute(row) >= startMinute && rowMinute(row) < startMinute + 30)
