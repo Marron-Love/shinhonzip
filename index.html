@@ -141,6 +141,16 @@
       display: grid;
       gap: 3px;
     }
+    .day-group {
+      display: grid;
+      gap: 3px;
+      padding-top: 5px;
+      border-top: 1px solid var(--line);
+    }
+    .day-group:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
     .bus-chip {
       display: inline-block;
       min-width: 46px;
@@ -461,7 +471,15 @@
         grouped.set(key, [...(grouped.get(key) || []), row]);
       }
       for (const [key, values] of grouped) {
-        grouped.set(key, values.sort((a, b) => parseDate(b.retrieved_at) - parseDate(a.retrieved_at)));
+        const earliestByBusAndDate = new Map();
+        for (const row of values) {
+          const dedupeKey = [dateKey(row.retrieved_at), row.plate_no || ""].join("|");
+          const prev = earliestByBusAndDate.get(dedupeKey);
+          if (!prev || parseDate(row.retrieved_at) < parseDate(prev.retrieved_at)) {
+            earliestByBusAndDate.set(dedupeKey, row);
+          }
+        }
+        grouped.set(key, [...earliestByBusAndDate.values()].sort((a, b) => parseDate(a.retrieved_at) - parseDate(b.retrieved_at)));
       }
       return grouped;
     }
@@ -489,6 +507,17 @@
       return `<span class="bus-chip" style="--chip-bg:${bg};--chip-fg:${fg}">${value}</span>`;
     }
 
+    function byDate(rows, renderItem) {
+      const grouped = new Map();
+      for (const row of rows) {
+        const key = dateKey(row.retrieved_at);
+        grouped.set(key, [...(grouped.get(key) || []), row]);
+      }
+      return `<span class="stack">${[...grouped.entries()].map(([, items]) =>
+        `<span class="day-group">${items.map((item) => `<span>${renderItem(item)}</span>`).join("")}</span>`
+      ).join("")}</span>`;
+    }
+
     function render(stations, grouped) {
       if (!stations.length) {
         $("rows").innerHTML = '<tr><td class="empty" colspan="6">이 노선의 정류장 목록이 없습니다.</td></tr>';
@@ -498,14 +527,13 @@
       $("rows").innerHTML = stations.map((station) => {
         const rows = grouped.get(Number(station.station_seq)) || [];
         const hasSeats = rows.some((row) => Number(row.remain_seat_num) > 0);
-        const stack = (items) => `<span class="stack">${items.map((item) => `<span>${item}</span>`).join("")}</span>`;
         return `<tr>
           <td>${station.station_seq}</td>
           <td>${station.station_name || "-"}</td>
           <td class="muted">${station.station_id || "-"}</td>
-          <td class="${rows.length ? (hasSeats ? "seats-good" : "seats-zero") : "muted"}">${rows.length ? stack(rows.map((row) => chip(row.plate_no, Number(row.remain_seat_num ?? 0)))) : "관측 없음"}</td>
-          <td>${rows.length ? stack(rows.map((row) => chip(row.plate_no, busSuffix(row.plate_no)))) : "-"}</td>
-          <td>${rows.length ? stack(rows.map((row) => chip(row.plate_no, fmtTime(row.retrieved_at)))) : "-"}</td>
+          <td class="${rows.length ? (hasSeats ? "seats-good" : "seats-zero") : "muted"}">${rows.length ? byDate(rows, (row) => chip(row.plate_no, Number(row.remain_seat_num ?? 0))) : "관측 없음"}</td>
+          <td>${rows.length ? byDate(rows, (row) => chip(row.plate_no, busSuffix(row.plate_no))) : "-"}</td>
+          <td>${rows.length ? byDate(rows, (row) => chip(row.plate_no, fmtTime(row.retrieved_at))) : "-"}</td>
         </tr>`;
       }).join("");
     }
