@@ -236392,5 +236392,608 @@
     "retrieved_at": "2026-07-15T11:36:58.954743Z",
     "remain_seat_num": 42,
     "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 10,
+    "plate_no": "경기70아8631",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 43,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 16,
+    "plate_no": "경기70아6506",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 34,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 22,
+    "plate_no": "경기70아6293",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 15,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 25,
+    "plate_no": "경기70아6342",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 30,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 29,
+    "plate_no": "경기77바8419",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 10,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 30,
+    "plate_no": "경기70아8895",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 21,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 35,
+    "plate_no": "경기77바8420",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 37,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 37,
+    "plate_no": "경기70아7094",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 29,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 40,
+    "plate_no": "경기70아6914",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 39,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 43,
+    "plate_no": "경기70아6507",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 44,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 43,
+    "plate_no": "경기70아8894",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 43,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 46,
+    "plate_no": "경기70아8774",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 42,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 53,
+    "plate_no": "경기70아6470",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 42,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 57,
+    "plate_no": "경기77바8412",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 41,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 60,
+    "plate_no": "경기70아8785",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 60,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 63,
+    "plate_no": "경기70아6462",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 36,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 66,
+    "plate_no": "경기70아8775",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 64,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 66,
+    "plate_no": "경기70아7093",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 36,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 70,
+    "plate_no": "경기70아7537",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 60,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 75,
+    "plate_no": "경기70아6471",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 42,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 75,
+    "plate_no": "경기70아8874",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 36,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 80,
+    "plate_no": "경기70아6508",
+    "retrieved_at": "2026-07-15T11:37:59.005293Z",
+    "remain_seat_num": 42,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 2,
+    "plate_no": "경기70아7522",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 68,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 11,
+    "plate_no": "경기70아8631",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 43,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 17,
+    "plate_no": "경기70아6506",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 34,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 23,
+    "plate_no": "경기70아6293",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 0,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 26,
+    "plate_no": "경기70아6342",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 30,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 29,
+    "plate_no": "경기77바8419",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 13,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 30,
+    "plate_no": "경기70아8895",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 21,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 36,
+    "plate_no": "경기77바8420",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 37,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 38,
+    "plate_no": "경기70아7094",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 31,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 40,
+    "plate_no": "경기70아6914",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 39,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 43,
+    "plate_no": "경기70아8894",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 43,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 43,
+    "plate_no": "경기70아6507",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 44,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 46,
+    "plate_no": "경기70아8774",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 42,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 54,
+    "plate_no": "경기70아6470",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 42,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 58,
+    "plate_no": "경기77바8412",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 39,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 60,
+    "plate_no": "경기70아8785",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 61,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 64,
+    "plate_no": "경기70아6462",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 36,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 66,
+    "plate_no": "경기70아8775",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 64,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 66,
+    "plate_no": "경기70아7093",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 36,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 72,
+    "plate_no": "경기70아7537",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 60,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 76,
+    "plate_no": "경기70아8874",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 37,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 76,
+    "plate_no": "경기70아6471",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 43,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 82,
+    "plate_no": "경기70아6508",
+    "retrieved_at": "2026-07-15T11:38:59.486900Z",
+    "remain_seat_num": 43,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 2,
+    "plate_no": "경기70아7522",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 68,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 12,
+    "plate_no": "경기70아8631",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 43,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 17,
+    "plate_no": "경기70아6506",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 34,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 23,
+    "plate_no": "경기70아6293",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 0,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 26,
+    "plate_no": "경기70아6342",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 30,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 29,
+    "plate_no": "경기77바8419",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 13,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 30,
+    "plate_no": "경기70아8895",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 21,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 37,
+    "plate_no": "경기77바8420",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 37,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 39,
+    "plate_no": "경기70아7094",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 33,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 40,
+    "plate_no": "경기70아6914",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 39,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 43,
+    "plate_no": "경기70아6507",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 44,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 47,
+    "plate_no": "경기70아8774",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 41,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 55,
+    "plate_no": "경기70아6470",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 42,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 59,
+    "plate_no": "경기77바8412",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 39,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 61,
+    "plate_no": "경기70아8785",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 61,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 64,
+    "plate_no": "경기70아6462",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 36,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 68,
+    "plate_no": "경기70아8775",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 64,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 68,
+    "plate_no": "경기70아7093",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 36,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 72,
+    "plate_no": "경기70아7537",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 60,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 77,
+    "plate_no": "경기70아8874",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 37,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 78,
+    "plate_no": "경기70아6471",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 43,
+    "eta_minutes": null
+  },
+  {
+    "route_id": "204000057",
+    "station_id": "",
+    "station_seq": 83,
+    "plate_no": "경기70아6508",
+    "retrieved_at": "2026-07-15T11:40:01.113693Z",
+    "remain_seat_num": 44,
+    "eta_minutes": null
   }
 ]
