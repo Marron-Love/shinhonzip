@@ -221,7 +221,8 @@
 
   <script>
     const $ = (id) => document.getElementById(id);
-    const state = { index: null, catalog: [], route: [], locations: new Map() };
+    const apiBaseUrl = "https://api.statistics.bus.skystar.kr";
+    const state = { index: null, catalog: [], route: [], routeCache: new Map(), locations: new Map() };
     const dashboardRouteIds = new Set(["204000057", "228000429", "228000431"]);
     // ponytail: dashboard-only 3330 picker limits; move to route data if this grows.
     const route3330Limits = { id: "204000057", eveningFromSeq: 21, morningToSeq: 66 };
@@ -295,10 +296,46 @@
       }
     }
 
+    async function getApiJson(path, params = {}) {
+      const url = new URL(path, apiBaseUrl);
+      for (const [key, value] of Object.entries(params)) url.searchParams.set(key, value);
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
+      return res.json();
+    }
+
+    function arrayFrom(payload) {
+      return Array.isArray(payload)
+        ? payload
+        : payload?.data || payload?.items || payload?.rows || payload?.response?.msgBody?.busRouteStationList || payload?.response?.body?.items || [];
+    }
+
+    function normalizeLocation(row, routeId) {
+      return {
+        route_id: String(row.route_id ?? row.routeId ?? row.bus_id ?? row.busId ?? routeId ?? ""),
+        station_id: String(row.station_id ?? row.stationId ?? ""),
+        station_seq: Number(row.station_seq ?? row.stationSeq ?? row.seq ?? 0),
+        plate_no: String(row.plate_no ?? row.plateNo ?? row.vehicle_no ?? row.vehicleNo ?? ""),
+        retrieved_at: row.retrieved_at ?? row.retrievedAt ?? row.timestamp ?? row.at ?? new Date().toISOString(),
+        remain_seat_num: Number(row.remain_seat_num ?? row.remainSeatNum ?? row.remaining_seats ?? row.remainingSeats ?? row.remainSeatCnt ?? 0),
+        eta_minutes: row.eta_minutes ?? row.etaMinutes ?? row.duration_minutes ?? row.durationMinutes ?? null
+      };
+    }
+
+    function normalizeStation(row) {
+      return {
+        station_seq: Number(row.station_seq ?? row.stationSeq ?? row.stationSeqNo ?? row.seq ?? row.seqNo ?? 0),
+        station_id: String(row.station_id ?? row.stationId ?? row.stationID ?? ""),
+        station_name: String(row.station_name ?? row.stationName ?? row.stationNameKr ?? row.name ?? row.stationNm ?? ""),
+        turn_seq: Number(row.turn_seq ?? row.turnSeq ?? 0) || null
+      };
+    }
+
     async function loadIndex() {
-      state.index = await getJson("data/index.json", { updated_at: null, dates: [], routes: [] });
+      const index = await getJson("data/index.json", { updated_at: null, dates: [], routes: [] });
       state.catalog = await getJson("data/route_catalog.json", []);
-      state.index.routes = (state.index.routes || []).filter((id) => dashboardRouteIds.has(String(id)));
+      const routes = (index.routes?.length ? index.routes : [...dashboardRouteIds]).filter((id) => dashboardRouteIds.has(String(id)));
+      state.index = { ...index, updated_at: new Date().toISOString(), dates: [dateKey(new Date())], routes };
 
       $("routeId").innerHTML = '<option value="">노선을 선택</option>' + routeOptions();
       renderSlots();
@@ -340,9 +377,21 @@
 
     async function loadRoute(routeId) {
       if (!routeId) return [];
+      if (state.routeCache.has(routeId)) {
+        state.route = state.routeCache.get(routeId);
+        return state.route;
+      }
       // ponytail: station_seq only becomes useful after this static bus/route station lookup.
-      state.route = (await getJson(`data/routes/${encodeURIComponent(routeId)}.json`, []))
+      const fallback = () => getJson(`data/routes/${encodeURIComponent(routeId)}.json`, []);
+      const raw = await getApiJson(`/api/busRouteStations/${encodeURIComponent(routeId)}`).catch(fallback);
+      const stations = arrayFrom(raw).map(normalizeStation).filter((station) => station.station_seq && station.station_name);
+      const meta = state.catalog.find((route) => String(route.route_id) === String(routeId)) || {};
+      const turnSeq = stations.find((station) => String(station.station_id) === String(meta.end_station_id))?.station_seq
+        || stations.find((station) => Number(station.turn_seq))?.turn_seq
+        || null;
+      state.route = stations.map((station) => ({ ...station, turn_seq: turnSeq || station.turn_seq }))
         .sort((a, b) => Number(a.station_seq) - Number(b.station_seq));
+      state.routeCache.set(routeId, state.route);
       return state.route;
     }
 
@@ -387,11 +436,18 @@
       }
     }
 
-    async function loadLocations() {
-      if (!state.locations.has("all")) {
-        state.locations.set("all", await getJson("data/locations/all.json", []));
+    async function loadLocations(routeId, date) {
+      const key = `${routeId}|${date}`;
+      if (!state.locations.has(key)) {
+        const fallback = async () => (await getJson("data/locations/all.json", []))
+          .filter((row) => String(row.route_id) === routeId)
+          .filter((row) => dateKey(row.retrieved_at) === date);
+        const raw = await getApiJson(`/api/busLocations/${encodeURIComponent(routeId)}`, { from: date, to: date }).catch(fallback);
+        state.locations.set(key, arrayFrom(raw)
+          .map((row) => normalizeLocation(row, routeId))
+          .filter((row) => row.route_id && row.station_seq && row.retrieved_at));
       }
-      return state.locations.get("all");
+      return state.locations.get(key);
     }
 
     function observationsByStation(rows) {
@@ -519,7 +575,7 @@
       setStatus("조회 중입니다.");
 
       const stations = commuteStations(await loadRoute(routeId));
-      const allRows = (await loadLocations())
+      const allRows = (await loadLocations(routeId, date))
         .filter((row) => String(row.route_id) === routeId)
         .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)))
         .filter((row) => dateKey(row.retrieved_at) === date);
