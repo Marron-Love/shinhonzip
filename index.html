@@ -496,6 +496,41 @@
       return grouped;
     }
 
+    function rowsFromDepartureSlot(rows, visibleStationSeqs, startMinute) {
+      const fromSeq = Number($("fromStation").value);
+      const byBusAndDate = new Map();
+      for (const row of rows) {
+        if (!row.plate_no) continue;
+        const key = [dateKey(row.retrieved_at), row.plate_no].join("|");
+        byBusAndDate.set(key, [...(byBusAndDate.get(key) || []), row]);
+      }
+
+      const selected = [];
+      for (const plateRows of byBusAndDate.values()) {
+        const fromRows = plateRows
+          .filter((row) => Number(row.station_seq) === fromSeq)
+          .sort((a, b) => parseDate(a.retrieved_at) - parseDate(b.retrieved_at));
+        const departures = fromRows.filter((row) => {
+          const minute = rowMinute(row);
+          return minute >= startMinute && minute < startMinute + 30;
+        });
+
+        for (const departure of departures) {
+          const departureAt = parseDate(departure.retrieved_at);
+          const nextDepartureAt = fromRows
+            .map((row) => parseDate(row.retrieved_at))
+            .find((at) => at > departureAt);
+          selected.push(...plateRows.filter((row) => {
+            const at = parseDate(row.retrieved_at);
+            return visibleStationSeqs.has(Number(row.station_seq))
+              && at >= departureAt
+              && (!nextDepartureAt || at < nextDepartureAt);
+          }));
+        }
+      }
+      return selected;
+    }
+
     function busSuffix(plate) {
       return String(plate || "-").match(/\d{4}$/)?.[0] || String(plate || "-").slice(-4);
     }
@@ -641,12 +676,7 @@
       const allRows = (await loadLocations(routeId))
         .filter((row) => String(row.route_id) === routeId)
         .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)));
-      const rows = allRows
-        .filter((row) => visibleStationSeqs.has(Number(row.station_seq)))
-        .filter((row) => {
-          const minute = rowMinute(row);
-          return minute >= start && minute < end;
-        });
+      const rows = rowsFromDepartureSlot(allRows, visibleStationSeqs, start);
 
       render(visibleStations, observationsByStation(rows));
       renderTravelTime(allRows, start);
