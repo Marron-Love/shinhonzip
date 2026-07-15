@@ -586,17 +586,24 @@
       const matches = [];
       for (const [key, plateRows] of byPlate) {
         const plate = key.split("|").at(-1);
-        const fromRows = plateRows
+        const allFromRows = plateRows
           .filter((row) => Number(row.station_seq) === fromSeq)
-          .filter((row) => rowMinute(row) >= startMinute && rowMinute(row) < startMinute + 30)
           .sort((a, b) => parseDate(a.retrieved_at) - parseDate(b.retrieved_at));
+        const fromRows = allFromRows
+          .filter((row) => rowMinute(row) >= startMinute && rowMinute(row) < startMinute + 30);
         const toRows = plateRows
           .filter((row) => Number(row.station_seq) === toSeq)
           .sort((a, b) => parseDate(a.retrieved_at) - parseDate(b.retrieved_at));
 
         for (const from of fromRows) {
           const fromAt = parseDate(from.retrieved_at);
-          const to = toRows.find((row) => parseDate(row.retrieved_at) > fromAt);
+          const nextFromAt = allFromRows
+            .map((row) => parseDate(row.retrieved_at))
+            .find((at) => at > fromAt);
+          const to = toRows.find((row) => {
+            const toAt = parseDate(row.retrieved_at);
+            return toAt > fromAt && (!nextFromAt || toAt < nextFromAt);
+          });
           if (!to) continue;
           const minutes = (parseDate(to.retrieved_at) - fromAt) / 60000;
           if (minutes > 0) matches.push({ plate, minutes, fromAt, toAt: parseDate(to.retrieved_at) });
