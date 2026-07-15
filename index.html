@@ -551,10 +551,18 @@
       const toName = state.route.find((station) => Number(station.station_seq) === toSeq)?.station_name || "도착 정류장";
       const fromRows = rows.filter((row) => Number(row.station_seq) === fromSeq)
         .filter((row) => rowMinute(row) >= startMinute && rowMinute(row) < startMinute + 30);
-      const fromSeats = fromRows.map((row) => Number(row.remain_seat_num ?? 0));
+      const seatSamples = new Map();
+      for (const row of fromRows) {
+        const key = [dateKey(row.retrieved_at), row.plate_no || ""].join("|");
+        const prev = seatSamples.get(key);
+        if (!prev || parseDate(row.retrieved_at) < parseDate(prev.retrieved_at)) seatSamples.set(key, row);
+      }
+      const seatRows = [...seatSamples.values()];
+      const fromSeats = seatRows.map((row) => Number(row.remain_seat_num ?? 0));
       $("fromSeatAvg").textContent = fromSeats.length
         ? `${Math.round(fromSeats.reduce((sum, seat) => sum + seat, 0) / fromSeats.length)}석`
         : "-";
+      const seatDayCount = new Set(seatRows.map((row) => dateKey(row.retrieved_at))).size;
 
       if (!fromSeq || !toSeq || fromSeq === toSeq) {
         $("travelAvg").textContent = "-";
@@ -590,13 +598,14 @@
 
       if (!matches.length) {
         $("travelAvg").textContent = "-";
-        $("travelDetail").textContent = `${fromName} -> ${toName}: 같은 차량의 연속 관측이 없습니다.`;
+        $("travelDetail").textContent = `${fromName} -> ${toName}: 소요 평균 없음, 좌석 ${seatDayCount}일 / ${seatRows.length}대 평균`;
         return;
       }
 
       const avg = matches.reduce((sum, item) => sum + item.minutes, 0) / matches.length;
+      const dayCount = new Set(matches.map((item) => dateKey(item.fromAt))).size;
       $("travelAvg").textContent = `${Math.round(avg)}분`;
-      $("travelDetail").textContent = `${fromName} -> ${toName}: ${matches.length}대 평균, ${matches.map((item) => `${item.plate} ${Math.round(item.minutes)}분`).join(" / ")}`;
+      $("travelDetail").textContent = `${fromName} -> ${toName}: 소요 ${dayCount}일 / ${matches.length}대 평균, 좌석 ${seatDayCount}일 / ${seatRows.length}대 평균`;
     }
 
     async function search() {
