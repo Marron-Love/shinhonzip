@@ -517,14 +517,10 @@
 
         for (const departure of departures) {
           const departureAt = parseDate(departure.retrieved_at);
-          const nextDepartureAt = fromRows
-            .map((row) => parseDate(row.retrieved_at))
-            .find((at) => at > departureAt);
           selected.push(...plateRows.filter((row) => {
             const at = parseDate(row.retrieved_at);
             return visibleStationSeqs.has(Number(row.station_seq))
-              && at >= departureAt
-              && (!nextDepartureAt || at < nextDepartureAt);
+              && at >= departureAt;
           }));
         }
       }
