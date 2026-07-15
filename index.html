@@ -434,6 +434,12 @@
       return stations;
     }
 
+    function tableStations(stations) {
+      const fromSeq = Number($("fromStation").value);
+      if ($("commuteMode").value !== "morning" || !fromSeq) return stations;
+      return stations.filter((station) => Number(station.station_seq) >= fromSeq);
+    }
+
     async function updateStationPickers() {
       const routeId = $("routeId").value;
       const stations = routeId ? commuteStations(await loadRoute(routeId)) : [];
@@ -606,16 +612,19 @@
       setStatus("조회 중입니다.");
 
       const stations = commuteStations(await loadRoute(routeId));
+      const visibleStations = tableStations(stations);
+      const visibleStationSeqs = new Set(visibleStations.map((station) => Number(station.station_seq)));
       const allRows = (await loadLocations(routeId))
         .filter((row) => String(row.route_id) === routeId)
         .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)));
       const rows = allRows
+        .filter((row) => visibleStationSeqs.has(Number(row.station_seq)))
         .filter((row) => {
           const minute = rowMinute(row);
           return minute >= start && minute < end;
         });
 
-      render(stations, observationsByStation(rows));
+      render(visibleStations, observationsByStation(rows));
       renderTravelTime(allRows, start);
       setStatus(`${hhmm(start)}-${hhmm(end)} 누적 ${rows.length}건 관측`);
     }
