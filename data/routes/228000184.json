@@ -188,37 +188,37 @@
   {
     "station_seq": 32,
     "station_id": "277103364",
-    "station_name": "수원신갈TG(미정차)",
+    "station_name": "수원신갈TG(경유)",
     "turn_seq": 64
   },
   {
     "station_seq": 33,
     "station_id": "277103361",
-    "station_name": "신갈JC(미정차)",
+    "station_name": "신갈JC(경유)",
     "turn_seq": 64
   },
   {
     "station_seq": 34,
     "station_id": "277103443",
-    "station_name": "죽전(미정차)",
+    "station_name": "죽전(경유)",
     "turn_seq": 64
   },
   {
     "station_seq": 35,
     "station_id": "277102630",
-    "station_name": "금곡(미정차)",
+    "station_name": "금곡(경유)",
     "turn_seq": 64
   },
   {
     "station_seq": 36,
     "station_id": "277103386",
-    "station_name": "서울TG(미정차)",
+    "station_name": "서울TG(경유)",
     "turn_seq": 64
   },
   {
     "station_seq": 37,
     "station_id": "277104184",
-    "station_name": "판교진입(미정차)",
+    "station_name": "판교진입(경유)",
     "turn_seq": 64
   },
   {
@@ -374,7 +374,7 @@
   {
     "station_seq": 63,
     "station_id": "277102301",
-    "station_name": "잠실대교북단(미정차)",
+    "station_name": "잠실대교북단(경유)",
     "turn_seq": 64
   },
   {
@@ -386,13 +386,13 @@
   {
     "station_seq": 65,
     "station_id": "277103308",
-    "station_name": "잠실대교북단(미정차)",
+    "station_name": "잠실대교북단(경유)",
     "turn_seq": 64
   },
   {
     "station_seq": 66,
     "station_id": "277102302",
-    "station_name": "잠실대교남단(미정차)",
+    "station_name": "잠실대교남단(경유)",
     "turn_seq": 64
   },
   {
@@ -404,7 +404,7 @@
   {
     "station_seq": 68,
     "station_id": "277101950",
-    "station_name": "석촌호수앞(미정차)",
+    "station_name": "석촌호수앞(경유)",
     "turn_seq": 64
   },
   {
@@ -554,37 +554,37 @@
   {
     "station_seq": 93,
     "station_id": "277104185",
-    "station_name": "판교출입(미정차)",
+    "station_name": "판교출입(경유)",
     "turn_seq": 64
   },
   {
     "station_seq": 94,
     "station_id": "277103385",
-    "station_name": "서울TG(미정차)",
+    "station_name": "서울TG(경유)",
     "turn_seq": 64
   },
   {
     "station_seq": 95,
     "station_id": "277102104",
-    "station_name": "금곡(미정차)",
+    "station_name": "금곡(경유)",
     "turn_seq": 64
   },
   {
     "station_seq": 96,
     "station_id": "277103442",
-    "station_name": "죽전(미정차)",
+    "station_name": "죽전(경유)",
     "turn_seq": 64
   },
   {
     "station_seq": 97,
     "station_id": "277103360",
-    "station_name": "신갈JC(미정차)",
+    "station_name": "신갈JC(경유)",
     "turn_seq": 64
   },
   {
     "station_seq": 98,
     "station_id": "277103365",
-    "station_name": "수원신갈TG(미정차)",
+    "station_name": "수원신갈TG(경유)",
     "turn_seq": 64
   },
   {
