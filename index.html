@@ -436,8 +436,14 @@
 
     function tableStations(stations) {
       const fromSeq = Number($("fromStation").value);
-      if ($("commuteMode").value !== "morning" || !fromSeq) return stations;
-      return stations.filter((station) => Number(station.station_seq) >= fromSeq);
+      const toSeq = Number($("toStation").value);
+      if (!fromSeq || !toSeq) return stations;
+      const [startSeq, endSeq] = [Math.min(fromSeq, toSeq), Math.max(fromSeq, toSeq)];
+      const visible = stations.filter((station) => {
+        const seq = Number(station.station_seq);
+        return seq >= startSeq && seq <= endSeq;
+      });
+      return fromSeq > toSeq ? visible.reverse() : visible;
     }
 
     async function updateStationPickers() {
