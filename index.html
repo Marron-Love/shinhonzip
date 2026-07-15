@@ -334,7 +334,7 @@
     async function loadIndex() {
       const index = await getJson("data/index.json", { updated_at: null, dates: [], routes: [] });
       state.catalog = await getJson("data/route_catalog.json", []);
-      const routes = (index.routes?.length ? index.routes : [...dashboardRouteIds]).filter((id) => dashboardRouteIds.has(String(id)));
+      const routes = [...dashboardRouteIds];
       state.index = { ...index, updated_at: new Date().toISOString(), dates: [dateKey(new Date())], routes };
 
       $("routeId").innerHTML = '<option value="">노선을 선택</option>' + routeOptions();
