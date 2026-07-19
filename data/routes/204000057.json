@@ -134,13 +134,13 @@
   {
     "station_seq": 23,
     "station_id": "277103149",
-    "station_name": "판교TG(경유)",
+    "station_name": "판교TG(미정차)",
     "turn_seq": 43
   },
   {
     "station_seq": 24,
     "station_id": "277102599",
-    "station_name": "청계터널진입(경유)",
+    "station_name": "청계터널진입(미정차)",
     "turn_seq": 43
   },
   {
@@ -152,7 +152,7 @@
   {
     "station_seq": 26,
     "station_id": "277103157",
-    "station_name": "학의JC(경유)",
+    "station_name": "학의JC(미정차)",
     "turn_seq": 43
   },
   {
@@ -260,7 +260,7 @@
   {
     "station_seq": 44,
     "station_id": "277101770",
-    "station_name": "원평노블레스5차(경유)",
+    "station_name": "원평노블레스5차(미정차)",
     "turn_seq": 43
   },
   {
@@ -368,7 +368,7 @@
   {
     "station_seq": 62,
     "station_id": "277103156",
-    "station_name": "학의JC(경유)",
+    "station_name": "학의JC(미정차)",
     "turn_seq": 43
   },
   {
@@ -380,13 +380,13 @@
   {
     "station_seq": 64,
     "station_id": "277102796",
-    "station_name": "청계터널출입(경유)",
+    "station_name": "청계터널출입(미정차)",
     "turn_seq": 43
   },
   {
     "station_seq": 65,
     "station_id": "277103148",
-    "station_name": "판교TG(경유)",
+    "station_name": "판교TG(미정차)",
     "turn_seq": 43
   },
   {
