@@ -80,67 +80,67 @@
   {
     "station_seq": 14,
     "station_id": "277103364",
-    "station_name": "수원신갈TG(미정차)",
+    "station_name": "수원신갈TG(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 15,
     "station_id": "277103361",
-    "station_name": "신갈JC(미정차)",
+    "station_name": "신갈JC(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 16,
     "station_id": "277103443",
-    "station_name": "죽전(미정차)",
+    "station_name": "죽전(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 17,
     "station_id": "277102630",
-    "station_name": "금곡(미정차)",
+    "station_name": "금곡(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 18,
     "station_id": "277103386",
-    "station_name": "서울TG(미정차)",
+    "station_name": "서울TG(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 19,
     "station_id": "277103151",
-    "station_name": "판교IC(미정차)",
+    "station_name": "판교IC(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 20,
     "station_id": "277103679",
-    "station_name": "금토JC(미정차)",
+    "station_name": "금토JC(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 21,
     "station_id": "277103441",
-    "station_name": "서울진입(미정차)",
+    "station_name": "서울진입(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 22,
     "station_id": "277104177",
-    "station_name": "청계산입구역(미정차)",
+    "station_name": "청계산입구역(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 23,
     "station_id": "277103388",
-    "station_name": "양재IC(미정차)",
+    "station_name": "양재IC(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 24,
     "station_id": "277103390",
-    "station_name": "서초IC(미정차)",
+    "station_name": "서초IC(경유)",
     "turn_seq": 29
   },
   {
@@ -158,13 +158,13 @@
   {
     "station_seq": 27,
     "station_id": "277103680",
-    "station_name": "강남역.지오다노(미정차)",
+    "station_name": "강남역.지오다노(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 28,
     "station_id": "277102911",
-    "station_name": "강남역10번출구(미정차)",
+    "station_name": "강남역10번출구(경유)",
     "turn_seq": 29
   },
   {
@@ -176,7 +176,7 @@
   {
     "station_seq": 30,
     "station_id": "277101612",
-    "station_name": "우성아파트앞사거리(미정차)",
+    "station_name": "우성아파트앞사거리(경유)",
     "turn_seq": 29
   },
   {
@@ -212,61 +212,61 @@
   {
     "station_seq": 36,
     "station_id": "277103387",
-    "station_name": "양재IC(미정차)",
+    "station_name": "양재IC(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 37,
     "station_id": "277104178",
-    "station_name": "청계산입구역(미정차)",
+    "station_name": "청계산입구역(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 38,
     "station_id": "277103440",
-    "station_name": "성남진입(미정차)",
+    "station_name": "성남진입(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 39,
     "station_id": "277103678",
-    "station_name": "금토JC(미정차)",
+    "station_name": "금토JC(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 40,
     "station_id": "277103150",
-    "station_name": "판교IC(미정차)",
+    "station_name": "판교IC(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 41,
     "station_id": "277103385",
-    "station_name": "서울TG(미정차)",
+    "station_name": "서울TG(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 42,
     "station_id": "277102104",
-    "station_name": "금곡(미정차)",
+    "station_name": "금곡(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 43,
     "station_id": "277103442",
-    "station_name": "죽전(미정차)",
+    "station_name": "죽전(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 44,
     "station_id": "277103360",
-    "station_name": "신갈JC(미정차)",
+    "station_name": "신갈JC(경유)",
     "turn_seq": 29
   },
   {
     "station_seq": 45,
     "station_id": "277103365",
-    "station_name": "수원신갈TG(미정차)",
+    "station_name": "수원신갈TG(경유)",
     "turn_seq": 29
   },
   {
