@@ -229,7 +229,7 @@
     const $ = (id) => document.getElementById(id);
     const apiBaseUrl = "https://api.statistics.bus.skystar.kr";
     const state = { index: null, catalog: [], route: [], routeCache: new Map(), locations: new Map() };
-    const dashboardRouteIds = new Set(["204000057", "228000429", "228000431"]);
+    const dashboardRouteIds = new Set(["204000057", "228000429", "228000431", "234000051"]);
     // ponytail: dashboard-only 3330 picker limits; move to route data if this grows.
     const route3330Limits = { id: "204000057", eveningFromSeq: 21, morningToSeq: 66 };
     // ponytail: API requires a date range; old enough start date means "all accumulated" for this dashboard.

@@ -30,6 +30,12 @@
     "reverse_commute": false
   },
   {
+    "route_id": "234000051",
+    "route_no": "3500",
+    "label": "3500",
+    "reverse_commute": false
+  },
+  {
     "route_id": "200000115",
     "route_no": "5100",
     "start_name": "\uc0ac\uc0c9\uc758\uad11\uc7a5",
