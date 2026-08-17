@@ -141,15 +141,11 @@
       display: grid;
       gap: 3px;
     }
-    .day-group {
-      display: grid;
-      gap: 3px;
-      padding-top: 5px;
-      border-top: 1px solid var(--line);
-    }
-    .day-group:first-child {
-      padding-top: 0;
-      border-top: 0;
+    .summary-chip {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
     }
     .bus-chip {
       display: inline-block;
@@ -238,6 +234,7 @@
     const route3330Limits = { id: "204000057", eveningFromSeq: 21, morningToSeq: 66 };
     // ponytail: API requires a date range; old enough start date means "all accumulated" for this dashboard.
     const locationsFromDate = "2020-01-01";
+    const observationPreviewCount = 3;
 
     const slots = {
       morning: slotRange(7 * 60, 11 * 60),
@@ -551,14 +548,14 @@
     }
 
     function byDate(rows, renderItem) {
-      const grouped = new Map();
-      for (const row of rows) {
-        const key = dateKey(row.retrieved_at);
-        grouped.set(key, [...(grouped.get(key) || []), row]);
-      }
-      return `<span class="stack">${[...grouped.entries()].map(([, items]) =>
-        `<span class="day-group">${items.map((item) => `<span>${renderItem(item)}</span>`).join("")}</span>`
-      ).join("")}</span>`;
+      const dayCount = new Set(rows.map((row) => dateKey(row.retrieved_at))).size;
+      const latest = [...rows]
+        .sort((a, b) => parseDate(b.retrieved_at) - parseDate(a.retrieved_at))
+        .slice(0, observationPreviewCount);
+      const summary = rows.length > latest.length
+        ? `<span class="summary-chip">총 ${dayCount}일 / ${rows.length}대</span>`
+        : "";
+      return `<span class="stack">${latest.map((item) => `<span>${renderItem(item)}</span>`).join("")}${summary}</span>`;
     }
 
     function render(stations, grouped) {
