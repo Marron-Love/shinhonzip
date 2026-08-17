@@ -229,7 +229,7 @@
     const $ = (id) => document.getElementById(id);
     const apiBaseUrl = "https://api.statistics.bus.skystar.kr";
     const state = { index: null, catalog: [], route: [], routeCache: new Map(), locations: new Map() };
-    const dashboardRouteIds = new Set(["204000057", "228000429", "228000431", "234000051"]);
+    const dashboardRouteIds = new Set(["204000057", "228000429", "228000431", "234000051", "200000110"]);
     // ponytail: dashboard-only 3330 picker limits; move to route data if this grows.
     const route3330Limits = { id: "204000057", eveningFromSeq: 21, morningToSeq: 66 };
     const route3500Limits = { id: "234000051", morningFromSeq: 42, morningToSeq: 63, eveningFromSeq: 21, eveningToSeq: 41 };
@@ -397,6 +397,7 @@
       const stations = arrayFrom(raw).map(normalizeStation).filter((station) => station.station_seq && station.station_name);
       const meta = state.catalog.find((route) => String(route.route_id) === String(routeId)) || {};
       const turnSeq = stations.find((station) => String(station.station_id) === String(meta.end_station_id))?.station_seq
+        || stations.find((station) => meta.end_name && String(station.station_name).includes(meta.end_name))?.station_seq
         || stations.find((station) => Number(station.turn_seq))?.turn_seq
         || null;
       state.route = stations.map((station) => ({ ...station, turn_seq: turnSeq || station.turn_seq }))

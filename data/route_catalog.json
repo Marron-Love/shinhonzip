@@ -40,6 +40,14 @@
     "reverse_commute": true
   },
   {
+    "route_id": "200000110",
+    "route_no": "3007",
+    "start_name": "\uc218\uc6d0\ubc84\uc2a4\ud130\ubbf8\ub110",
+    "end_name": "\uac15\ub0a8\uc5ed\ub098\ub77c\ube4c\ub529\uc55e",
+    "label": "3007 - \uc218\uc6d0\ubc84\uc2a4\ud130\ubbf8\ub110 -> \uac15\ub0a8\uc5ed\ub098\ub77c\ube4c\ub529\uc55e",
+    "reverse_commute": false
+  },
+  {
     "route_id": "200000115",
     "route_no": "5100",
     "start_name": "\uc0ac\uc0c9\uc758\uad11\uc7a5",
