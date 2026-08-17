@@ -32,8 +32,12 @@
   {
     "route_id": "234000051",
     "route_no": "3500",
-    "label": "3500",
-    "reverse_commute": false
+    "start_name": "\uad6c\ubbf8\ub3d9\ucc28\uace0\uc9c0",
+    "start_station_id": "277103068",
+    "end_name": "\ucf00\ud53c\ucf54\uacbd\uae30\uc678\uad6d\uc5b4\uace0\ub4f1\ud559\uad50",
+    "end_station_id": "225000266",
+    "label": "3500 - \uad6c\ubbf8\ub3d9\ucc28\uace0\uc9c0 -> \ucf00\ud53c\ucf54\uacbd\uae30\uc678\uad6d\uc5b4\uace0\ub4f1\ud559\uad50",
+    "reverse_commute": true
   },
   {
     "route_id": "200000115",

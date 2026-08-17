@@ -232,6 +232,7 @@
     const dashboardRouteIds = new Set(["204000057", "228000429", "228000431", "234000051"]);
     // ponytail: dashboard-only 3330 picker limits; move to route data if this grows.
     const route3330Limits = { id: "204000057", eveningFromSeq: 21, morningToSeq: 66 };
+    const route3500Limits = { id: "234000051", morningFromSeq: 42, morningToSeq: 63, eveningFromSeq: 21, eveningToSeq: 41 };
     // ponytail: API requires a date range; old enough start date means "all accumulated" for this dashboard.
     const locationsFromDate = "2020-01-01";
     const observationPreviewCount = 3;
@@ -421,11 +422,18 @@
     function pickerStations(stations, picker) {
       const routeId = $("routeId").value;
       const mode = $("commuteMode").value;
-      if (routeId !== route3330Limits.id) return stations;
-      if (mode === "evening" && picker === "from") {
+      if (routeId === route3500Limits.id) {
+        const startSeq = mode === "morning" ? route3500Limits.morningFromSeq : route3500Limits.eveningFromSeq;
+        const endSeq = mode === "morning" ? route3500Limits.morningToSeq : route3500Limits.eveningToSeq;
+        return stations.filter((station) => {
+          const seq = Number(station.station_seq);
+          return seq >= startSeq && seq <= endSeq;
+        });
+      }
+      if (routeId === route3330Limits.id && mode === "evening" && picker === "from") {
         return stations.filter((station) => Number(station.station_seq) >= route3330Limits.eveningFromSeq);
       }
-      if (mode === "morning" && picker === "to") {
+      if (routeId === route3330Limits.id && mode === "morning" && picker === "to") {
         return stations.filter((station) => Number(station.station_seq) <= route3330Limits.morningToSeq);
       }
       return stations;
