@@ -522,14 +522,29 @@
 
         for (const departure of departures) {
           const departureAt = parseDate(departure.retrieved_at);
+          const nextDepartureAt = fromRows
+            .map((row) => parseDate(row.retrieved_at))
+            .find((at) => at > departureAt);
           selected.push(...plateRows.filter((row) => {
             const at = parseDate(row.retrieved_at);
             return visibleStationSeqs.has(Number(row.station_seq))
-              && at >= departureAt;
+              && at >= departureAt
+              && (!nextDepartureAt || at < nextDepartureAt);
           }));
         }
       }
       return selected;
+    }
+
+    function departureStats(rows, startMinute) {
+      const fromSeq = Number($("fromStation").value);
+      const departures = rows
+        .filter((row) => Number(row.station_seq) === fromSeq)
+        .filter((row) => rowMinute(row) >= startMinute && rowMinute(row) < startMinute + 30);
+      return {
+        days: new Set(departures.map((row) => dateKey(row.retrieved_at))).size,
+        buses: new Set(departures.map((row) => [dateKey(row.retrieved_at), row.plate_no || ""].join("|"))).size
+      };
     }
 
     function busSuffix(plate) {
@@ -678,10 +693,11 @@
         .filter((row) => String(row.route_id) === routeId)
         .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)));
       const rows = rowsFromDepartureSlot(allRows, visibleStationSeqs, start);
+      const stats = departureStats(allRows, start);
 
       render(visibleStations, observationsByStation(rows));
       renderTravelTime(allRows, start);
-      setStatus(`${hhmm(start)}-${hhmm(end)} 누적 ${rows.length}건 관측`);
+      setStatus(`${hhmm(start)}-${hhmm(end)} ${stats.days}일 / ${stats.buses}대 기준`);
     }
 
     $("routeId").addEventListener("change", async () => {
