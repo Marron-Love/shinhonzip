@@ -43,7 +43,9 @@
     "route_id": "200000110",
     "route_no": "3007",
     "start_name": "\uc218\uc6d0\ubc84\uc2a4\ud130\ubbf8\ub110",
+    "start_station_id": "201000212",
     "end_name": "\uac15\ub0a8\uc5ed\ub098\ub77c\ube4c\ub529\uc55e",
+    "end_station_id": "121000921",
     "label": "3007 - \uc218\uc6d0\ubc84\uc2a4\ud130\ubbf8\ub110 -> \uac15\ub0a8\uc5ed\ub098\ub77c\ube4c\ub529\uc55e",
     "reverse_commute": false
   },
