@@ -14,7 +14,7 @@
   {
     "station_seq": 3,
     "station_id": "277104650",
-    "station_name": "완장리(미정차)",
+    "station_name": "완장리(경유)",
     "turn_seq": 25
   },
   {
@@ -86,37 +86,37 @@
   {
     "station_seq": 15,
     "station_id": "277103364",
-    "station_name": "수원신갈TG(미정차)",
+    "station_name": "수원신갈TG(경유)",
     "turn_seq": 25
   },
   {
     "station_seq": 16,
     "station_id": "277103361",
-    "station_name": "신갈JC(미정차)",
+    "station_name": "신갈JC(경유)",
     "turn_seq": 25
   },
   {
     "station_seq": 17,
     "station_id": "277103443",
-    "station_name": "죽전(미정차)",
+    "station_name": "죽전(경유)",
     "turn_seq": 25
   },
   {
     "station_seq": 18,
     "station_id": "277102630",
-    "station_name": "금곡(미정차)",
+    "station_name": "금곡(경유)",
     "turn_seq": 25
   },
   {
     "station_seq": 19,
     "station_id": "277103386",
-    "station_name": "서울TG(미정차)",
+    "station_name": "서울TG(경유)",
     "turn_seq": 25
   },
   {
     "station_seq": 20,
     "station_id": "277104184",
-    "station_name": "판교진입(미정차)",
+    "station_name": "판교진입(경유)",
     "turn_seq": 25
   },
   {
@@ -176,37 +176,37 @@
   {
     "station_seq": 30,
     "station_id": "277104185",
-    "station_name": "판교출입(미정차)",
+    "station_name": "판교출입(경유)",
     "turn_seq": 25
   },
   {
     "station_seq": 31,
     "station_id": "277103385",
-    "station_name": "서울TG(미정차)",
+    "station_name": "서울TG(경유)",
     "turn_seq": 25
   },
   {
     "station_seq": 32,
     "station_id": "277102104",
-    "station_name": "금곡(미정차)",
+    "station_name": "금곡(경유)",
     "turn_seq": 25
   },
   {
     "station_seq": 33,
     "station_id": "277103442",
-    "station_name": "죽전(미정차)",
+    "station_name": "죽전(경유)",
     "turn_seq": 25
   },
   {
     "station_seq": 34,
     "station_id": "277103360",
-    "station_name": "신갈JC(미정차)",
+    "station_name": "신갈JC(경유)",
     "turn_seq": 25
   },
   {
     "station_seq": 35,
     "station_id": "277103365",
-    "station_name": "수원신갈TG(미정차)",
+    "station_name": "수원신갈TG(경유)",
     "turn_seq": 25
   },
   {
@@ -272,7 +272,7 @@
   {
     "station_seq": 46,
     "station_id": "277104667",
-    "station_name": "완장리(미정차)",
+    "station_name": "완장리(경유)",
     "turn_seq": 25
   },
   {
