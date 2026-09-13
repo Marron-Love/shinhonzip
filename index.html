@@ -146,6 +146,11 @@
       line-height: 1.35;
     }
 
+    .recommend-avoid {
+      color: var(--bad);
+      font-weight: 700;
+    }
+
     .table-actions {
       display: flex;
       justify-content: flex-end;
@@ -651,15 +656,20 @@
         if (!prev || parseDate(row.retrieved_at) < parseDate(prev.retrieved_at)) samples.set(key, row);
       }
 
-      const grouped = Array.from({ length: 7 }, () => ({ sum: 0, buses: 0, days: new Set(), minutes: [] }));
+      const grouped = Array.from({ length: 7 }, () => ({ sum: 0, buses: 0, days: new Set(), minutes: [], avoid: new Map() }));
       for (const row of samples.values()) {
         const day = weekdayIndex(row.retrieved_at);
         const minute = rowMinute(row);
+        const avoidMinute = Math.floor(minute / 5) * 5;
         const item = grouped[day];
         item.sum += Number(row.remain_seat_num ?? 0);
         item.buses += 1;
         item.days.add(dateKey(row.retrieved_at));
         item.minutes.push(minute);
+        const avoid = item.avoid.get(avoidMinute) || { buses: 0, zero: 0 };
+        avoid.buses += 1;
+        if (Number(row.remain_seat_num ?? 0) <= 0) avoid.zero += 1;
+        item.avoid.set(avoidMinute, avoid);
       }
 
       const names = ["월", "화", "수", "목", "금", "토", "일"];
@@ -670,10 +680,16 @@
         const sortedMinutes = [...item.minutes].sort((a, b) => a - b);
         const middle = sortedMinutes[Math.floor(sortedMinutes.length / 2)];
         const recommendedMinute = Math.round(middle / 5) * 5;
+        const avoid = [...item.avoid.entries()]
+          .map(([minute, value]) => ({ minute, ...value, rate: value.zero / value.buses }))
+          .sort((a, b) => b.rate - a.rate || b.zero - a.zero || b.buses - a.buses || a.minute - b.minute)[0];
+        const avoidText = avoid?.zero
+          ? `<br><span class="recommend-avoid">비추천 ${hhmm(avoid.minute)} · 0석 ${Math.round(avoid.rate * 100)}%</span>`
+          : "<br>0석 관측 없음";
         return `<div class="recommend-card">
           <span class="recommend-day">${names[day]}</span>
           <span class="recommend-time">${hhmm(recommendedMinute)}</span>
-          <div class="recommend-meta">${hhmm(startMinute)}-${hhmm(startMinute + 30)} 중간값<br>평균 ${Math.round(item.sum / item.buses)}석 · ${item.days.size}일 / ${item.buses}대</div>
+          <div class="recommend-meta">${hhmm(startMinute)}-${hhmm(startMinute + 30)} 중간값<br>평균 ${Math.round(item.sum / item.buses)}석 · ${item.days.size}일 / ${item.buses}대${avoidText}</div>
         </div>`;
       });
 
