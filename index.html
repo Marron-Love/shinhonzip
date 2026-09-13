@@ -658,11 +658,13 @@
       const grouped = Array.from({ length: 7 }, () => new Map());
       for (const row of samples.values()) {
         const day = weekdayIndex(row.retrieved_at);
-        const slot = Math.floor(rowMinute(row) / 30) * 30;
-        const item = grouped[day].get(slot) || { sum: 0, buses: 0, days: new Set() };
+        const minute = rowMinute(row);
+        const slot = Math.floor(minute / 30) * 30;
+        const item = grouped[day].get(slot) || { sum: 0, buses: 0, days: new Set(), minutes: [] };
         item.sum += Number(row.remain_seat_num ?? 0);
         item.buses += 1;
         item.days.add(dateKey(row.retrieved_at));
+        item.minutes.push(minute);
         grouped[day].set(slot, item);
       }
 
@@ -674,10 +676,13 @@
         if (!best) {
           return `<div class="recommend-card"><span class="recommend-day">${names[day]}</span><span class="recommend-time">-</span><div class="recommend-meta">관측 없음</div></div>`;
         }
+        const sortedMinutes = [...best.minutes].sort((a, b) => a - b);
+        const middle = sortedMinutes[Math.floor(sortedMinutes.length / 2)];
+        const recommendedMinute = Math.round(middle / 5) * 5;
         return `<div class="recommend-card">
           <span class="recommend-day">${names[day]}</span>
-          <span class="recommend-time">${hhmm(best.slot)}</span>
-          <div class="recommend-meta">평균 ${Math.round(best.avg)}석<br>${best.days.size}일 / ${best.buses}대</div>
+          <span class="recommend-time">${hhmm(recommendedMinute)}</span>
+          <div class="recommend-meta">${hhmm(best.slot)}-${hhmm(best.slot + 30)} 중간값<br>평균 ${Math.round(best.avg)}석 · ${best.days.size}일 / ${best.buses}대</div>
         </div>`;
       });
 
