@@ -1,0 +1,656 @@
+[
+  {
+    "station_seq": 1,
+    "station_id": "228001736",
+    "station_name": "단국대.치과병원",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 2,
+    "station_id": "228001978",
+    "station_name": "단국대정문",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 3,
+    "station_id": "228001413",
+    "station_name": "대지고등학교.전내교차로",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 4,
+    "station_id": "228001006",
+    "station_name": "꽃메마을1단지",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 5,
+    "station_id": "228001005",
+    "station_name": "꽃메마을.새에덴교회",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 6,
+    "station_id": "228001004",
+    "station_name": "꽃메마을.현대홈타운3단지",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 7,
+    "station_id": "228002190",
+    "station_name": "중앙공원",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 8,
+    "station_id": "228001003",
+    "station_name": "보정동행정복지센터",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 9,
+    "station_id": "228001377",
+    "station_name": "보정동카페거리.죽현마을",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 10,
+    "station_id": "228001084",
+    "station_name": "죽전초중고교.대현초교",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 11,
+    "station_id": "206000251",
+    "station_name": "농수산물센터",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 12,
+    "station_id": "206000040",
+    "station_name": "오리역",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 13,
+    "station_id": "206000219",
+    "station_name": "하얀마을.구미도서관",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 14,
+    "station_id": "206000088",
+    "station_name": "까치마을.건영빌라.2001아울렛",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 15,
+    "station_id": "206000087",
+    "station_name": "미금역.청솔마을.2001아울렛",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 16,
+    "station_id": "206000086",
+    "station_name": "청솔주공6단지",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 17,
+    "station_id": "206000085",
+    "station_name": "상록마을",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 18,
+    "station_id": "206000084",
+    "station_name": "KT.주택전시관",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 19,
+    "station_id": "206000325",
+    "station_name": "한진아파트",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 20,
+    "station_id": "206000324",
+    "station_name": "정자2동행정복지센터",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 21,
+    "station_id": "206000323",
+    "station_name": "주공7단지앞.한솔종합사회복지관.치매안심센터",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 22,
+    "station_id": "206000279",
+    "station_name": "양지마을",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 23,
+    "station_id": "206000278",
+    "station_name": "롯데백화점.수내역",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 24,
+    "station_id": "206000300",
+    "station_name": "분당구청.중앙공원후문",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 25,
+    "station_id": "206000299",
+    "station_name": "서현역.AK플라자",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 26,
+    "station_id": "206000515",
+    "station_name": "이매촌한신.서현역.AK프라자",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 27,
+    "station_id": "206000530",
+    "station_name": "성남역.백현마을2단지",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 28,
+    "station_id": "206000531",
+    "station_name": "백현마을1단지",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 29,
+    "station_id": "206000532",
+    "station_name": "판교역.낙생육교.현대백화점",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 30,
+    "station_id": "277103149",
+    "station_name": "판교TG(경유)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 31,
+    "station_id": "277102599",
+    "station_name": "청계터널진입(경유)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 32,
+    "station_id": "226000190",
+    "station_name": "의왕청계영업소",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 33,
+    "station_id": "277103200",
+    "station_name": "과천터널진입(경유)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 34,
+    "station_id": "220000025",
+    "station_name": "정부과천청사역2번출구",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 35,
+    "station_id": "220000024",
+    "station_name": "과천중앙공원.KT과천지사",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 36,
+    "station_id": "220000023",
+    "station_name": "경기과천교육도서관.과천역6출구",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 37,
+    "station_id": "220000022",
+    "station_name": "8.9단지",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 38,
+    "station_id": "220000021",
+    "station_name": "관문체육공원.과천성당",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 39,
+    "station_id": "220000020",
+    "station_name": "과천동행정복지센터",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 40,
+    "station_id": "220000001",
+    "station_name": "남태령고개",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 41,
+    "station_id": "120000671",
+    "station_name": "남태령역(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 42,
+    "station_id": "277103902",
+    "station_name": "사당IC출입(경유)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 43,
+    "station_id": "121001315",
+    "station_name": "사당역(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 44,
+    "station_id": "121000533",
+    "station_name": "이수역(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 45,
+    "station_id": "121000532",
+    "station_name": "총신대입구역.남성사계시장입구앞(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 46,
+    "station_id": "121000531",
+    "station_name": "경문고등학교(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 47,
+    "station_id": "121000530",
+    "station_name": "정금마을(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 48,
+    "station_id": "277103397",
+    "station_name": "한강대교남단(경유)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 49,
+    "station_id": "118000058",
+    "station_name": "63빌딩.가톨릭대학교여의도성모병원",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 50,
+    "station_id": "118000065",
+    "station_name": "KBS별관",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 51,
+    "station_id": "118000071",
+    "station_name": "여의도역5번출구",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 52,
+    "station_id": "118000047",
+    "station_name": "국회의사당역.KB국민은행",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 53,
+    "station_id": "118000051",
+    "station_name": "여의도순복음교회",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 54,
+    "station_id": "118000053",
+    "station_name": "여의도공원9번출입구",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 55,
+    "station_id": "118000054",
+    "station_name": "여의나루역1번출구",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 56,
+    "station_id": "118000073",
+    "station_name": "한국거래소",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 57,
+    "station_id": "118000070",
+    "station_name": "여의도역6번출구",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 58,
+    "station_id": "118000064",
+    "station_name": "진주아파트",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 59,
+    "station_id": "118000059",
+    "station_name": "63빌딩.가톨릭대학교여의도성모병원",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 60,
+    "station_id": "277103409",
+    "station_name": "여의상류IC(경유)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 61,
+    "station_id": "277103398",
+    "station_name": "한강대교남단(경유)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 62,
+    "station_id": "277103536",
+    "station_name": "국립현충원진입(경유)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 63,
+    "station_id": "119000289",
+    "station_name": "갯마을앞(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 64,
+    "station_id": "119000288",
+    "station_name": "정금마을.방배경찰서(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 65,
+    "station_id": "119000287",
+    "station_name": "경문고교.배나무골앞(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 66,
+    "station_id": "119000286",
+    "station_name": "총신대입구역.남성사계시장입구앞(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 67,
+    "station_id": "119000285",
+    "station_name": "사당동우체국앞(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 68,
+    "station_id": "119000284",
+    "station_name": "방배노인종합복지관(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 69,
+    "station_id": "121001314",
+    "station_name": "사당역(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 70,
+    "station_id": "120000672",
+    "station_name": "사당자동차학원(중)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 71,
+    "station_id": "120000061",
+    "station_name": "남태령역",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 72,
+    "station_id": "220000002",
+    "station_name": "남태령고개",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 73,
+    "station_id": "220000009",
+    "station_name": "과천동행정복지센터",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 74,
+    "station_id": "220000008",
+    "station_name": "관문체육공원.과천성당",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 75,
+    "station_id": "220000007",
+    "station_name": "10단지",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 76,
+    "station_id": "220000006",
+    "station_name": "경기과천교육도서관.과천역7출구",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 77,
+    "station_id": "220000005",
+    "station_name": "정부과천청사역11번출구.KT과천지사",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 78,
+    "station_id": "220000004",
+    "station_name": "정부과천청사역3번출구",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 79,
+    "station_id": "220000003",
+    "station_name": "수자원공사.센트레빌아스테리움",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 80,
+    "station_id": "277103201",
+    "station_name": "과천터널진입(경유)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 81,
+    "station_id": "226000191",
+    "station_name": "의왕청계영업소",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 82,
+    "station_id": "277102796",
+    "station_name": "청계터널출입(경유)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 83,
+    "station_id": "277103148",
+    "station_name": "판교TG(경유)",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 84,
+    "station_id": "206000535",
+    "station_name": "판교역.낙생육교.현대백화점",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 85,
+    "station_id": "206000536",
+    "station_name": "백현마을4단지",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 86,
+    "station_id": "206000537",
+    "station_name": "성남역.백현마을3단지",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 87,
+    "station_id": "206000618",
+    "station_name": "이매촌한신.서현역.AK프라자",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 88,
+    "station_id": "206000026",
+    "station_name": "서현역.AK플라자",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 89,
+    "station_id": "206000297",
+    "station_name": "분당구청.중앙공원후문",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 90,
+    "station_id": "206000296",
+    "station_name": "수내역.롯데백화점",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 91,
+    "station_id": "206000295",
+    "station_name": "양지마을",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 92,
+    "station_id": "206000182",
+    "station_name": "주공7단지앞.치매안심센터",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 93,
+    "station_id": "206000181",
+    "station_name": "정자2동행정복지센터",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 94,
+    "station_id": "206000180",
+    "station_name": "한솔프라자",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 95,
+    "station_id": "206000098",
+    "station_name": "KT.주택전시관",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 96,
+    "station_id": "206000097",
+    "station_name": "상록마을(임광.보성).미켈란쉐르빌",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 97,
+    "station_id": "206000096",
+    "station_name": "분당경영고.한라아파트",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 98,
+    "station_id": "206000095",
+    "station_name": "미금역.청솔마을.2001아울렛",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 99,
+    "station_id": "206000094",
+    "station_name": "까치마을건영빌라.구미도서관",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 100,
+    "station_id": "206000216",
+    "station_name": "하얀마을",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 101,
+    "station_id": "206000215",
+    "station_name": "오리역",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 102,
+    "station_id": "206000241",
+    "station_name": "농수산물센터",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 103,
+    "station_id": "228001144",
+    "station_name": "벽산아파트",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 104,
+    "station_id": "228001143",
+    "station_name": "죽전초중고교.대현초교",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 105,
+    "station_id": "228001002",
+    "station_name": "보정동행정복지센터",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 106,
+    "station_id": "228001317",
+    "station_name": "중앙공원",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 107,
+    "station_id": "228001001",
+    "station_name": "꽃메마을2단지",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 108,
+    "station_id": "228001000",
+    "station_name": "대지고등학교.전내교차로",
+    "turn_seq": null
+  },
+  {
+    "station_seq": 109,
+    "station_id": "228001737",
+    "station_name": "단국대.치과병원",
+    "turn_seq": null
+  }
+]

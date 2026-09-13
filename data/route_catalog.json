@@ -98,5 +98,25 @@
     "end_station_id": "204000199",
     "label": "9241 - \ud55c\uc2326\ub2e8\uc9c0 -> \uad6d\uac00\uae30\ub85d\uc6d0\uc131\ub0a8\ubd84\uc6d0.\ucf54\uc774\uce74",
     "reverse_commute": false
+  },
+  {
+    "route_id": "208000027",
+    "route_no": "3030",
+    "start_name": "\uad70\ud3ec\uacf5\uc601\ucc28\uace0\uc9c0",
+    "start_station_id": "225000181",
+    "end_name": "\uc2e0\uc0ac\uc5ed.\ud478\ub978\uc800\ucd95\uc740\ud589(\uc911)",
+    "end_station_id": "121000015",
+    "label": "3030 - \uad70\ud3ec\uacf5\uc601\ucc28\uace0\uc9c0 -> \uc2e0\uc0ac\uc5ed.\ud478\ub978\uc800\ucd95\uc740\ud589(\uc911)",
+    "reverse_commute": false
+  },
+  {
+    "route_id": "228000393",
+    "route_no": "7007-1",
+    "start_name": "\ub2e8\uad6d\ub300.\uce58\uacfc\ubcd1\uc6d0",
+    "start_station_id": "228001736",
+    "end_name": "\uc9c4\uc8fc\uc544\ud30c\ud2b8",
+    "end_station_id": "118000064",
+    "label": "7007-1 - \ub2e8\uad6d\ub300.\uce58\uacfc\ubcd1\uc6d0 -> \uc9c4\uc8fc\uc544\ud30c\ud2b8",
+    "reverse_commute": false
   }
 ]
