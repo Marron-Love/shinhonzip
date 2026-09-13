@@ -100,6 +100,52 @@
       line-height: 1.45;
     }
 
+    .recommend-panel {
+      margin: 16px 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .recommend-panel h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+    }
+
+    .recommend-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(110px, 1fr));
+      gap: 8px;
+    }
+
+    .recommend-card {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background: #fff;
+    }
+
+    .recommend-day {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .recommend-time {
+      display: block;
+      margin-top: 4px;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .recommend-meta {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
     .table-actions {
       display: flex;
       justify-content: flex-end;
@@ -183,6 +229,7 @@
 
     @media (max-width: 820px) {
       .filters, .travel-panel { grid-template-columns: 1fr; }
+      .recommend-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       h1 { font-size: 23px; }
     }
   </style>
@@ -218,6 +265,13 @@
         도착 정류장
         <select id="toStation"><option value="">노선 선택</option></select>
       </label>
+    </section>
+
+    <section class="recommend-panel" aria-label="요일별 추천 탑승 시간대">
+      <h2>요일별 추천 탑승 시간대</h2>
+      <div id="recommendations" class="recommend-grid">
+        <p class="muted">노선을 선택하면 출발 정류장 기준 추천 시간대를 계산합니다.</p>
+      </div>
     </section>
 
     <section class="travel-panel" aria-label="소요시간">
@@ -575,6 +629,61 @@
       };
     }
 
+    function weekdayIndex(value) {
+      const key = dateKey(value);
+      if (!key) return -1;
+      const day = new Date(`${key}T00:00:00+09:00`).getDay();
+      return (day + 6) % 7;
+    }
+
+    function renderRecommendations(rows) {
+      const fromSeq = Number($("fromStation").value);
+      const mode = $("commuteMode").value || "morning";
+      const slotValues = slots[mode] || [];
+      const slotStarts = new Set(slotValues);
+      const samples = new Map();
+
+      for (const row of rows) {
+        if (Number(row.station_seq) !== fromSeq || !row.plate_no) continue;
+        const minute = rowMinute(row);
+        const slot = Math.floor(minute / 30) * 30;
+        if (!slotStarts.has(slot)) continue;
+        const day = weekdayIndex(row.retrieved_at);
+        if (day < 0) continue;
+        const key = [day, slot, dateKey(row.retrieved_at), row.plate_no].join("|");
+        const prev = samples.get(key);
+        if (!prev || parseDate(row.retrieved_at) < parseDate(prev.retrieved_at)) samples.set(key, row);
+      }
+
+      const grouped = Array.from({ length: 7 }, () => new Map());
+      for (const row of samples.values()) {
+        const day = weekdayIndex(row.retrieved_at);
+        const slot = Math.floor(rowMinute(row) / 30) * 30;
+        const item = grouped[day].get(slot) || { sum: 0, buses: 0, days: new Set() };
+        item.sum += Number(row.remain_seat_num ?? 0);
+        item.buses += 1;
+        item.days.add(dateKey(row.retrieved_at));
+        grouped[day].set(slot, item);
+      }
+
+      const names = ["월", "화", "수", "목", "금", "토", "일"];
+      const cards = grouped.map((slotsByDay, day) => {
+        const best = [...slotsByDay.entries()]
+          .map(([slot, item]) => ({ slot, ...item, avg: item.sum / item.buses }))
+          .sort((a, b) => b.avg - a.avg || b.buses - a.buses || a.slot - b.slot)[0];
+        if (!best) {
+          return `<div class="recommend-card"><span class="recommend-day">${names[day]}</span><span class="recommend-time">-</span><div class="recommend-meta">관측 없음</div></div>`;
+        }
+        return `<div class="recommend-card">
+          <span class="recommend-day">${names[day]}</span>
+          <span class="recommend-time">${hhmm(best.slot)}</span>
+          <div class="recommend-meta">평균 ${Math.round(best.avg)}석<br>${best.days.size}일 / ${best.buses}대</div>
+        </div>`;
+      });
+
+      $("recommendations").innerHTML = cards.join("");
+    }
+
     function busSuffix(plate) {
       return String(plate || "-").match(/\d{4}$/)?.[0] || String(plate || "-").slice(-4);
     }
@@ -734,6 +843,7 @@
         .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)));
       const stats = departureStats(allRows, start);
 
+      renderRecommendations(allRows);
       renderTravelTime(allRows, start);
       if (state.detailOpen) {
         const visibleStations = tableStations(stations);
