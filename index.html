@@ -135,8 +135,9 @@
     .recommend-time {
       display: block;
       margin-top: 4px;
-      font-size: 20px;
+      font-size: 28px;
       font-weight: 800;
+      line-height: 1;
     }
 
     .recommend-meta {
@@ -146,9 +147,31 @@
       line-height: 1.35;
     }
 
-    .recommend-avoid {
+    .recommend-picks {
+      display: grid;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .recommend-pick {
+      border-radius: 6px;
+      padding: 10px;
+    }
+
+    .recommend-pick strong {
+      display: block;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .recommend-pick.good {
+      background: #eaf7ec;
+      color: var(--good);
+    }
+
+    .recommend-pick.bad {
+      background: #fdecef;
       color: var(--bad);
-      font-weight: 700;
     }
 
     .table-actions {
@@ -683,13 +706,22 @@
         const avoid = [...item.avoid.entries()]
           .map(([minute, value]) => ({ minute, ...value, rate: value.zero / value.buses }))
           .sort((a, b) => b.rate - a.rate || b.zero - a.zero || b.buses - a.buses || a.minute - b.minute)[0];
-        const avoidText = avoid?.zero
-          ? `<br><span class="recommend-avoid">비추천 ${hhmm(avoid.minute)} · 0석 ${Math.round(avoid.rate * 100)}%</span>`
-          : "<br>0석 관측 없음";
+        const avoidBody = avoid?.zero
+          ? `<span class="recommend-time">${hhmm(avoid.minute)}</span><div class="recommend-meta">0석 ${Math.round(avoid.rate * 100)}% · ${avoid.zero}/${avoid.buses}대</div>`
+          : `<span class="recommend-time">-</span><div class="recommend-meta">0석 관측 없음</div>`;
         return `<div class="recommend-card">
           <span class="recommend-day">${names[day]}</span>
-          <span class="recommend-time">${hhmm(recommendedMinute)}</span>
-          <div class="recommend-meta">${hhmm(startMinute)}-${hhmm(startMinute + 30)} 중간값<br>평균 ${Math.round(item.sum / item.buses)}석 · ${item.days.size}일 / ${item.buses}대${avoidText}</div>
+          <div class="recommend-picks">
+            <div class="recommend-pick good">
+              <strong>추천</strong>
+              <span class="recommend-time">${hhmm(recommendedMinute)}</span>
+              <div class="recommend-meta">평균 ${Math.round(item.sum / item.buses)}석 · ${item.days.size}일 / ${item.buses}대</div>
+            </div>
+            <div class="recommend-pick bad">
+              <strong>비추천</strong>
+              ${avoidBody}
+            </div>
+          </div>
         </div>`;
       });
 
