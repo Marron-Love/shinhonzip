@@ -659,17 +659,48 @@
 
     function renderRecommendations(rows, startMinute) {
       const fromSeq = Number($("fromStation").value);
+      const toSeq = Number($("toStation").value);
       const samples = new Map();
+      const byBusAndDate = new Map();
 
       for (const row of rows) {
-        if (Number(row.station_seq) !== fromSeq || !row.plate_no) continue;
-        const minute = rowMinute(row);
-        if (minute < startMinute || minute >= startMinute + 30) continue;
-        const day = weekdayIndex(row.retrieved_at);
-        if (day < 0) continue;
-        const key = [day, dateKey(row.retrieved_at), row.plate_no].join("|");
-        const prev = samples.get(key);
-        if (!prev || parseDate(row.retrieved_at) < parseDate(prev.retrieved_at)) samples.set(key, row);
+        if (!row.plate_no) continue;
+        const key = [dateKey(row.retrieved_at), row.plate_no].join("|");
+        const plateRows = byBusAndDate.get(key);
+        if (plateRows) plateRows.push(row);
+        else byBusAndDate.set(key, [row]);
+      }
+
+      for (const plateRows of byBusAndDate.values()) {
+        const fromRows = plateRows
+          .filter((row) => Number(row.station_seq) === fromSeq)
+          .sort((a, b) => parseDate(a.retrieved_at) - parseDate(b.retrieved_at));
+        const toRows = plateRows
+          .filter((row) => Number(row.station_seq) === toSeq)
+          .sort((a, b) => parseDate(a.retrieved_at) - parseDate(b.retrieved_at));
+        const departures = fromRows.filter((row) => {
+          const minute = rowMinute(row);
+          return minute >= startMinute && minute < startMinute + 30;
+        });
+
+        for (const departure of departures) {
+          const day = weekdayIndex(departure.retrieved_at);
+          if (day < 0) continue;
+          const departureAt = parseDate(departure.retrieved_at);
+          const nextDepartureAt = fromRows
+            .map((row) => parseDate(row.retrieved_at))
+            .find((at) => at > departureAt);
+          const to = toRows.find((row) => {
+            const toAt = parseDate(row.retrieved_at);
+            return toAt > departureAt && (!nextDepartureAt || toAt < nextDepartureAt);
+          });
+          const travelMinutes = to ? (parseDate(to.retrieved_at) - departureAt) / 60000 : null;
+          const key = [day, dateKey(departure.retrieved_at), departure.plate_no].join("|");
+          const prev = samples.get(key);
+          if (!prev || departureAt < parseDate(prev.retrieved_at)) {
+            samples.set(key, { ...departure, travel_minutes: travelMinutes && travelMinutes > 0 ? travelMinutes : null });
+          }
+        }
       }
 
       const grouped = Array.from({ length: 7 }, () => ({ buses: 0, days: new Set(), slots: new Map() }));
@@ -680,11 +711,27 @@
         const item = grouped[day];
         item.buses += 1;
         item.days.add(dateKey(row.retrieved_at));
-        const slot = item.slots.get(slotMinute) || { buses: 0, seated: 0 };
+        const slot = item.slots.get(slotMinute) || { buses: 0, seated: 0, travelSum: 0, travelCount: 0 };
         slot.buses += 1;
         if (Number(row.remain_seat_num ?? 0) > 0) slot.seated += 1;
+        if (row.travel_minutes) {
+          slot.travelSum += row.travel_minutes;
+          slot.travelCount += 1;
+        }
         item.slots.set(slotMinute, slot);
       }
+
+      const travelAverages = grouped.flatMap((item) => [...item.slots.values()]
+        .filter((slot) => slot.travelCount)
+        .map((slot) => slot.travelSum / slot.travelCount));
+      const fastest = Math.min(...travelAverages);
+      const slowest = Math.max(...travelAverages);
+      // ponytail: simple local blend; tune weights if seats/time need different real-world priority.
+      const colorScore = (seatRate, travelAvg) => {
+        if (!travelAvg || !Number.isFinite(fastest) || fastest === slowest) return seatRate;
+        const timeRate = 1 - ((travelAvg - fastest) / (slowest - fastest));
+        return (seatRate * 0.7) + (Math.max(0, Math.min(1, timeRate)) * 0.3);
+      };
 
       const names = ["월", "화", "수", "목", "금", "토", "일"];
       const cards = grouped.map((item, day) => {
@@ -695,8 +742,10 @@
             return `<div class="safety-slot" style="background:#eef2f7;color:var(--muted)"><span class="safety-time">${hhmm(minute)}</span><span class="safety-rate">관측 없음</span></div>`;
           }
           const rate = slot.seated / slot.buses;
-          const hue = Math.round(rate * 120);
-          return `<div class="safety-slot" style="background:hsl(${hue} 75% 42%);color:#fff"><span class="safety-time">${hhmm(minute)}</span><span class="safety-rate">${Math.round(rate * 100)}% · ${slot.seated}/${slot.buses}대</span></div>`;
+          const travelAvg = slot.travelCount ? slot.travelSum / slot.travelCount : null;
+          const hue = Math.round(colorScore(rate, travelAvg) * 120);
+          const travelText = travelAvg ? ` · ${Math.round(travelAvg)}분` : "";
+          return `<div class="safety-slot" style="background:hsl(${hue} 75% 42%);color:#fff"><span class="safety-time">${hhmm(minute)}</span><span class="safety-rate">${Math.round(rate * 100)}% · ${slot.seated}/${slot.buses}대${travelText}</span></div>`;
         }).join("");
         return `<div class="recommend-card">
           <span class="recommend-day">${names[day]}</span>
