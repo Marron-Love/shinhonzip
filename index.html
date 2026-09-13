@@ -636,53 +636,44 @@
       return (day + 6) % 7;
     }
 
-    function renderRecommendations(rows) {
+    function renderRecommendations(rows, startMinute) {
       const fromSeq = Number($("fromStation").value);
-      const mode = $("commuteMode").value || "morning";
-      const slotValues = slots[mode] || [];
-      const slotStarts = new Set(slotValues);
       const samples = new Map();
 
       for (const row of rows) {
         if (Number(row.station_seq) !== fromSeq || !row.plate_no) continue;
         const minute = rowMinute(row);
-        const slot = Math.floor(minute / 30) * 30;
-        if (!slotStarts.has(slot)) continue;
+        if (minute < startMinute || minute >= startMinute + 30) continue;
         const day = weekdayIndex(row.retrieved_at);
         if (day < 0) continue;
-        const key = [day, slot, dateKey(row.retrieved_at), row.plate_no].join("|");
+        const key = [day, dateKey(row.retrieved_at), row.plate_no].join("|");
         const prev = samples.get(key);
         if (!prev || parseDate(row.retrieved_at) < parseDate(prev.retrieved_at)) samples.set(key, row);
       }
 
-      const grouped = Array.from({ length: 7 }, () => new Map());
+      const grouped = Array.from({ length: 7 }, () => ({ sum: 0, buses: 0, days: new Set(), minutes: [] }));
       for (const row of samples.values()) {
         const day = weekdayIndex(row.retrieved_at);
         const minute = rowMinute(row);
-        const slot = Math.floor(minute / 30) * 30;
-        const item = grouped[day].get(slot) || { sum: 0, buses: 0, days: new Set(), minutes: [] };
+        const item = grouped[day];
         item.sum += Number(row.remain_seat_num ?? 0);
         item.buses += 1;
         item.days.add(dateKey(row.retrieved_at));
         item.minutes.push(minute);
-        grouped[day].set(slot, item);
       }
 
       const names = ["월", "화", "수", "목", "금", "토", "일"];
-      const cards = grouped.map((slotsByDay, day) => {
-        const best = [...slotsByDay.entries()]
-          .map(([slot, item]) => ({ slot, ...item, avg: item.sum / item.buses }))
-          .sort((a, b) => b.avg - a.avg || b.buses - a.buses || a.slot - b.slot)[0];
-        if (!best) {
+      const cards = grouped.map((item, day) => {
+        if (!item.buses) {
           return `<div class="recommend-card"><span class="recommend-day">${names[day]}</span><span class="recommend-time">-</span><div class="recommend-meta">관측 없음</div></div>`;
         }
-        const sortedMinutes = [...best.minutes].sort((a, b) => a - b);
+        const sortedMinutes = [...item.minutes].sort((a, b) => a - b);
         const middle = sortedMinutes[Math.floor(sortedMinutes.length / 2)];
         const recommendedMinute = Math.round(middle / 5) * 5;
         return `<div class="recommend-card">
           <span class="recommend-day">${names[day]}</span>
           <span class="recommend-time">${hhmm(recommendedMinute)}</span>
-          <div class="recommend-meta">${hhmm(best.slot)}-${hhmm(best.slot + 30)} 중간값<br>평균 ${Math.round(best.avg)}석 · ${best.days.size}일 / ${best.buses}대</div>
+          <div class="recommend-meta">${hhmm(startMinute)}-${hhmm(startMinute + 30)} 중간값<br>평균 ${Math.round(item.sum / item.buses)}석 · ${item.days.size}일 / ${item.buses}대</div>
         </div>`;
       });
 
@@ -848,7 +839,7 @@
         .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)));
       const stats = departureStats(allRows, start);
 
-      renderRecommendations(allRows);
+      renderRecommendations(allRows, start);
       renderTravelTime(allRows, start);
       if (state.detailOpen) {
         const visibleStations = tableStations(stations);
