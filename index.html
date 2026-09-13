@@ -712,11 +712,11 @@
         const item = grouped[day];
         item.buses += 1;
         item.days.add(dateKey(row.retrieved_at));
-        const slot = item.slots.get(slotMinute) || { buses: 0, seated: 0, tight: 0, seatScoreSum: 0, travelSum: 0, travelCount: 0 };
+        const slot = item.slots.get(slotMinute) || { buses: 0, seated: 0, seatSum: 0, seatScoreSum: 0, travelSum: 0, travelCount: 0 };
         slot.buses += 1;
         const seats = Number(row.remain_seat_num ?? 0);
         if (seats > 0) slot.seated += 1;
-        if (seats < safeSeatThreshold) slot.tight += 1;
+        slot.seatSum += seats;
         slot.seatScoreSum += Math.max(0, Math.min(1, seats / safeSeatThreshold));
         if (row.travel_minutes) {
           slot.travelSum += row.travel_minutes;
@@ -746,11 +746,12 @@
             return `<div class="safety-slot" style="background:#eef2f7;color:var(--muted)"><span class="safety-time">${hhmm(minute)}</span><span class="safety-rate">관측 없음</span></div>`;
           }
           const rate = slot.seated / slot.buses;
+          const averageSeats = Math.round(slot.seatSum / slot.buses);
           const seatScore = slot.seatScoreSum / slot.buses;
           const travelAvg = slot.travelCount ? slot.travelSum / slot.travelCount : null;
           const hue = Math.round(colorScore(seatScore, travelAvg) * 120);
           const travelText = travelAvg ? ` · ${Math.round(travelAvg)}분` : "";
-          return `<div class="safety-slot" style="background:hsl(${hue} 75% 42%);color:#fff"><span class="safety-time">${hhmm(minute)}</span><span class="safety-rate">${Math.round(rate * 100)}% · 10석미만 ${slot.tight}/${slot.buses}대${travelText}</span></div>`;
+          return `<div class="safety-slot" style="background:hsl(${hue} 75% 42%);color:#fff"><span class="safety-time">${hhmm(minute)}</span><span class="safety-rate">${Math.round(rate * 100)}% · 평균 ${averageSeats}석/${slot.buses}대${travelText}</span></div>`;
         }).join("");
         return `<div class="recommend-card">
           <span class="recommend-day">${names[day]}</span>
