@@ -100,6 +100,29 @@
       line-height: 1.45;
     }
 
+    .table-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin: 0 0 8px;
+    }
+
+    button {
+      min-height: 38px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 700;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
     .table-wrap {
       overflow: auto;
       background: var(--panel);
@@ -206,7 +229,11 @@
       <p id="travelDetail">정류장 두 개를 선택하면 같은 차량 기준 소요시간을 계산합니다.</p>
     </section>
 
-    <section class="table-wrap" aria-label="정류장별 잔여좌석">
+    <div class="table-actions">
+      <button id="detailToggle" type="button">상세 표 불러오기</button>
+    </div>
+
+    <section class="table-wrap" id="detailSection" aria-label="정류장별 잔여좌석" hidden>
       <table>
         <thead>
           <tr>
@@ -228,7 +255,7 @@
   <script>
     const $ = (id) => document.getElementById(id);
     const apiBaseUrl = "https://api.statistics.bus.skystar.kr";
-    const state = { index: null, catalog: [], route: [], routeCache: new Map(), locations: new Map() };
+    const state = { index: null, catalog: [], route: [], routeCache: new Map(), locations: new Map(), detailOpen: false };
     const dashboardRouteIds = new Set(["204000057", "228000429", "228000431", "234000051", "200000110"]);
     // ponytail: dashboard-only 3330 picker limits; move to route data if this grows.
     const route3330Limits = { id: "204000057", eveningFromSeq: 21, morningToSeq: 66 };
@@ -602,6 +629,20 @@
       }).join("");
     }
 
+    function setDetailOpen(open) {
+      state.detailOpen = open;
+      $("detailSection").hidden = !open;
+      $("detailToggle").textContent = open ? "상세 표 접기" : "상세 표 불러오기";
+      if (!open) {
+        $("rows").innerHTML = '<tr><td class="empty" colspan="6">상세 표를 불러오면 정류장별 관측을 표시합니다.</td></tr>';
+      }
+    }
+
+    function renderDetails(allRows, visibleStations, visibleStationSeqs, start) {
+      const rows = rowsFromDepartureSlot(allRows, visibleStationSeqs, start);
+      render(visibleStations, observationsByStation(rows));
+    }
+
     function renderTravelTime(rows, startMinute) {
       const fromSeq = Number($("fromStation").value);
       const toSeq = Number($("toStation").value);
@@ -688,16 +729,17 @@
       setStatus("조회 중입니다.");
 
       const stations = commuteStations(await loadRoute(routeId));
-      const visibleStations = tableStations(stations);
-      const visibleStationSeqs = new Set(visibleStations.map((station) => Number(station.station_seq)));
       const allRows = (await loadLocations(routeId))
         .filter((row) => String(row.route_id) === routeId)
         .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)));
-      const rows = rowsFromDepartureSlot(allRows, visibleStationSeqs, start);
       const stats = departureStats(allRows, start);
 
-      render(visibleStations, observationsByStation(rows));
       renderTravelTime(allRows, start);
+      if (state.detailOpen) {
+        const visibleStations = tableStations(stations);
+        const visibleStationSeqs = new Set(visibleStations.map((station) => Number(station.station_seq)));
+        renderDetails(allRows, visibleStations, visibleStationSeqs, start);
+      }
       setStatus(`${hhmm(start)}-${hhmm(end)} ${stats.days}일 / ${stats.buses}대 기준`);
     }
 
@@ -713,6 +755,10 @@
     $("timeSlot").addEventListener("change", () => search());
     $("fromStation").addEventListener("change", () => search());
     $("toStation").addEventListener("change", () => search());
+    $("detailToggle").addEventListener("click", () => {
+      setDetailOpen(!state.detailOpen);
+      if (state.detailOpen) search();
+    });
     loadIndex();
   </script>
 </body>
