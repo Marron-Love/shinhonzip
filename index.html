@@ -580,8 +580,8 @@
           to: dateKey(new Date()),
           fromStationSeq,
           toStationSeq,
-          slotStart: startMinute,
-          slotMinutes: 30
+          startTime: hhmm(startMinute),
+          endTime: hhmm(startMinute + 30)
         }).catch(fallback);
         state.locations.set(key, arrayFrom(raw)
           .map((row) => normalizeLocation(row, routeId))
