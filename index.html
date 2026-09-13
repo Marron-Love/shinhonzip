@@ -568,14 +568,20 @@
       }
     }
 
-    async function loadLocations(routeId) {
-      const key = routeId;
+    async function loadLocations(routeId, startMinute) {
+      const fromStationSeq = Number($("fromStation").value);
+      const toStationSeq = Number($("toStation").value);
+      const key = [routeId, fromStationSeq, toStationSeq, startMinute].join("|");
       if (!state.locations.has(key)) {
         const fallback = async () => (await getJson("data/locations/all.json", []))
           .filter((row) => String(row.route_id) === routeId);
         const raw = await getApiJson(`/api/busLocations/${encodeURIComponent(routeId)}`, {
           from: locationsFromDate,
-          to: dateKey(new Date())
+          to: dateKey(new Date()),
+          fromStationSeq,
+          toStationSeq,
+          slotStart: startMinute,
+          slotMinutes: 30
         }).catch(fallback);
         state.locations.set(key, arrayFrom(raw)
           .map((row) => normalizeLocation(row, routeId))
@@ -917,7 +923,7 @@
       setStatus("조회 중입니다.");
 
       const stations = commuteStations(await loadRoute(routeId));
-      const allRows = (await loadLocations(routeId))
+      const allRows = (await loadLocations(routeId, start))
         .filter((row) => String(row.route_id) === routeId)
         .filter((row) => stations.some((station) => Number(station.station_seq) === Number(row.station_seq)));
       const stats = departureStats(allRows, start);
