@@ -571,6 +571,7 @@
     async function loadLocations(routeId, startMinute) {
       const fromStationSeq = Number($("fromStation").value);
       const toStationSeq = Number($("toStation").value);
+      const [filterFromStationSeq, filterToStationSeq] = [Math.min(fromStationSeq, toStationSeq), Math.max(fromStationSeq, toStationSeq)];
       const key = [routeId, fromStationSeq, toStationSeq, startMinute].join("|");
       if (!state.locations.has(key)) {
         const fallback = async () => (await getJson("data/locations/all.json", []))
@@ -578,8 +579,8 @@
         const raw = await getApiJson(`/api/busLocations/${encodeURIComponent(routeId)}`, {
           from: locationsFromDate,
           to: dateKey(new Date()),
-          fromStationSeq,
-          toStationSeq,
+          fromStationSeq: filterFromStationSeq,
+          toStationSeq: filterToStationSeq,
           startTime: hhmm(startMinute),
           endTime: hhmm(startMinute + 30)
         }).catch(fallback);
