@@ -537,10 +537,9 @@
       const routeId = $("routeId").value;
       const mode = $("commuteMode").value;
       if (routeId === route7007Limits.id) {
-        const seq = picker === "from"
-          ? (mode === "morning" ? route7007Limits.morningFromSeq : route7007Limits.eveningFromSeq)
-          : (mode === "morning" ? route7007Limits.morningToSeq : route7007Limits.eveningToSeq);
-        return stations.filter((station) => Number(station.station_seq) === seq);
+        const fromSeq = mode === "morning" ? route7007Limits.morningFromSeq : route7007Limits.eveningFromSeq;
+        const toSeq = mode === "morning" ? route7007Limits.morningToSeq : route7007Limits.eveningToSeq;
+        return fromSeq > toSeq ? [...stations].reverse() : stations;
       }
       if (routeId === route3500Limits.id) {
         const startSeq = mode === "morning" ? route3500Limits.morningFromSeq : route3500Limits.eveningFromSeq;
