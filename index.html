@@ -596,9 +596,7 @@
           from: locationsFromDate,
           to: dateKey(new Date()),
           fromStationSeq: filterFromStationSeq,
-          toStationSeq: filterToStationSeq,
-          startTime: hhmm(startMinute),
-          endTime: hhmm(startMinute + 30)
+          toStationSeq: filterToStationSeq
         }).catch(fallback);
         state.locations.set(key, arrayFrom(raw)
           .map((row) => normalizeLocation(row, routeId))
